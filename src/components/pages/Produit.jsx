@@ -20,6 +20,8 @@ const Item = () => {
     description,
     plantationCare,
     idealFor,
+    pricePot,
+    priceRoot,
   } = item;
 
   const [loading, setLoading] = useState(true);
@@ -67,7 +69,38 @@ const Item = () => {
           <p>VOIR PLUS DE DÉTAILS</p>
         </a>
         <hr />
-        <div>Ajouter au panier</div>
+        <div>
+          <div>
+            <img />
+            <div>
+              <div>
+                <p>En Conteneur de 4L/5L</p>
+                <p>{parseFloat(pricePot).toFixed(2)} €</p>
+              </div>
+              <p>Livraison - novembre 2020</p>
+              <div>
+                <p>Quantité</p>
+                <p>Ajouter au pannier</p>
+              </div>
+              <p>Ajouter à la liste de souhaits</p>
+            </div>
+          </div>
+          <div>
+            <img />
+            <div>
+              <div>
+                <p>À Racines Nues</p>
+                <p>{parseFloat(priceRoot).toFixed(2)} €</p>
+              </div>
+              <p>Livraison - novembre 2020</p>
+              <div>
+                <p>Quantité</p>
+                <p>Ajouter au pannier</p>
+              </div>
+              <p>Ajouter à la liste de souhaits</p>
+            </div>
+          </div>
+        </div>
         <hr />
         <div id="details">
           <div>
