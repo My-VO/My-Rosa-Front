@@ -15,6 +15,7 @@ const Item = () => {
     variety,
     color,
     perfume,
+    flowering,
     size,
     description,
     plantationCare,
@@ -42,7 +43,6 @@ const Item = () => {
   return (
     <>
       <Link to="/">Back to Home</Link>
-      <p>Description de rosier</p>
       <img src={PicturesItems[0].picture} alt={name} />
       <div>
         <div>
@@ -53,38 +53,57 @@ const Item = () => {
         <div>
           <p>Couleur: {color}</p>
           <p>Parfum: {perfume}</p>
+          <p>Floraison: {flowering}</p>
           <p>Hauteur à maturité: {size} cm</p>
         </div>
         <hr />
         <p>
-          {description.split('_')[0]} <span>En savoir plus</span>
+          {description.split('_')[0]}{' '}
+          <a href="#description">
+            <span> En savoir plus</span>
+          </a>
         </p>
+        <a href="#details">
+          <p>VOIR PLUS DE DÉTAILS</p>
+        </a>
         <hr />
-        <div>
-          <h4>Description</h4>
-          {description.split('_').map((para) => (
-            <div key={para.idPara}>
-              <p>{para}</p>
-            </div>
-          ))}
-        </div>
+        <div>Ajouter au panier</div>
         <hr />
-        <div>
-          <h4>Plantations & Soins</h4>
-          {plantationCare.split('.').map((element) => (
-            <div key={element.idElement}>
-              <span>{element}</span>
-            </div>
-          ))}
-        </div>
-        <hr />
-        <div>
-          <h4>Utilisations</h4>
-          {idealFor.split('.').map((element) => (
-            <div key={element.idElement}>
-              <span>{element}</span>
-            </div>
-          ))}
+        <div id="details">
+          <div>
+            <h4 id="description">Description</h4>
+            {description.split('_').map((para) => (
+              <div key={para.idPara}>
+                <p>{para}</p>
+              </div>
+            ))}
+          </div>
+          <hr />
+          <div>
+            <h4>Plantations & Soins</h4>
+            {plantationCare.split('.').map((element) => (
+              <div key={element.idElement}>
+                <span>{element}</span>
+              </div>
+            ))}
+          </div>
+          <hr />
+          <div>
+            <h4>Utilisations</h4>
+            {idealFor.split('.').map((element) => (
+              <div key={element.idElement}>
+                <span>{element}</span>
+              </div>
+            ))}
+          </div>
+          <hr />
+          <div>
+            <h4>Avis & Questions Clients</h4>
+          </div>
+          <hr />
+          <div>
+            <h4>Photos clients</h4>
+          </div>
         </div>
       </div>
     </>
