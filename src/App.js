@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Items from './components/pages/Home';
+import Item from './components/pages/Produit';
 
 import logo from './assets/favicon/logo.png';
 
@@ -20,7 +21,8 @@ function App() {
       </div>
       <Router>
         <Switch>
-          <Route path="/" component={Items} />
+          <Route exact path="/" component={Items} />
+          <Route exact path="/items/:itemId" component={Item} />
         </Switch>
       </Router>
       <Footer />
