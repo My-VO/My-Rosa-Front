@@ -1,0 +1,29 @@
+a {
+    text-decoration: none;
+}
+
+input {
+    cursor: text;
+    outline: none;
+    padding-left: 10px;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 115, 56, 0.64);
+    opacity: 1; /* Firefox */
+    font-size: 1 rem;
+    font-weight: 400;
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0, 115, 56, 0.64);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0, 115, 56, 0.64);
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -44,7 +44,6 @@ const Item = () => {
 
   return (
     <>
-      <Link to="/">Back to Home</Link>
       <img src={PicturesItems[0].picture} alt={name} />
       <div>
         <div>
