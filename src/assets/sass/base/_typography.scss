@@ -1,5 +1,12 @@
 a {
     text-decoration: none;
+    color: #007338;
+    &:hover,
+    &:focus,
+    &:active {
+      color: #d1132c;
+      filter: invert(23%) sepia(97%) saturate(3706%) hue-rotate(340deg) brightness(80%) contrast(108%);
+    }
 }
 
 input {

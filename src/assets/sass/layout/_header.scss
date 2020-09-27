@@ -1,4 +1,100 @@
 .header {
-    background-color: #007338;
-    color: white;
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
+    -moz-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
+    box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
+    &__announcement {
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        background-color: #007338;
+        &__container {
+            grid-column: 2 / 3;
+            color: white;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            span, select {
+                color: white;
+                margin: 0 4px;
+                font-size: 0.85rem;
+            }
+            select {
+                width: 100%;
+                background-color: #007338;
+                border: none;
+            }
+        }
+    }
+    &__masthead {
+        display: flex;
+        padding: 5px 20px;
+        &__brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &__logo {
+                width: 3rem;
+                object-fit: contain;
+            }
+            &__name {
+                color: #007338;
+                font-size: 1.2rem;
+            }
+        }
+        &__navbar {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex: 1;
+            text-align: center;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+        &__misc {
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+            &__search-bar {
+                display: flex;
+                align-items: center;
+                border: 1px solid #C4C4C4 ;
+                padding: 0 10px;
+                height: 30px;
+                &__input {
+                    width: 100%;
+                    border: none;
+                }
+                &__button {
+                    appearance: none;
+                    background-color: white;
+                    border: none;
+                    &__icon {
+                        padding: 3px 4px 1px 0px;
+                        align-items: center;
+                        background-color: white;
+                        color: #007338;
+                    }
+                }
+            }
+            &__link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;;
+                text-align: center;
+                line-height: 1.5;
+                &__icon {
+                    width: 1.3rem;
+                    filter: invert(28%) sepia(30%) saturate(2150%) hue-rotate(112deg) brightness(92%) contrast(102%)
+                }
+            }
+        }
+     }
 }
+
+
+ 

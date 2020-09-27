@@ -1,0 +1,16 @@
+.footer {
+    background-color: #007338;
+    color: white;
+    padding: 5px 20px;
+    font-size: 0.85rem;;
+    display: flex;
+    justify-content: center;
+    span {
+        color: white;
+        margin: 0 4px;
+    }
+
+    &__reseaux-sociaux {
+        width: 0.85rem;;
+    }
+}
