@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
+
+import { CartContext } from '../CartContext';
 
 const API = process.env.REACT_APP_API;
 
@@ -25,6 +27,12 @@ const Item = () => {
   } = item;
 
   const [loading, setLoading] = useState(true);
+
+  const [cart, setCart] = useContext(CartContext);
+
+  const addToCart = () => {
+    setCart((currentState) => [...currentState, item]);
+  };
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -79,12 +87,12 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                {/* <button onClick={addCart}>Ajouter au pannier</button> */}
+                <button onClick={addToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img />
             <div>
               <div>
@@ -94,11 +102,11 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                {/* <button onClick={addCart}>Ajouter au pannier</button> */}
+                <button onClick={addToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <hr />
         <div id="details">
