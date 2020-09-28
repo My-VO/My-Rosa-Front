@@ -2,6 +2,10 @@
     -webkit-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
     -moz-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
     box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 100;
     &__announcement {
         display: grid;
         grid-template-columns: 50vw 50vw;
@@ -25,6 +29,7 @@
         }
     }
     &__masthead {
+        background-color: white;
         display: flex;
         padding: 5px 20px;
         &__brand {
@@ -44,7 +49,7 @@
             text-transform: uppercase;
             font-size: 1.2rem;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
             flex: 1;
             text-align: center;
@@ -87,6 +92,15 @@
                 font-size: 1.2rem;;
                 text-align: center;
                 line-height: 1.5;
+                &__cart {
+                    display: flex;
+                    span {
+                        font-size: 0.8rem;
+                        font-weight: 800;
+                        margin-left: -1px;
+                        margin-bottom: 18px;
+                    }
+                }
                 &__icon {
                     width: 1.3rem;
                     filter: invert(28%) sepia(30%) saturate(2150%) hue-rotate(112deg) brightness(92%) contrast(102%)

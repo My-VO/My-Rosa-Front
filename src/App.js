@@ -31,14 +31,17 @@ function App() {
           <Route exact path="/account/login">
             <h1>Login</h1>
           </Route>
-          <Route exact path="/account/checkout">
-            <h1>Checkout</h1>
-          </Route>
           <Route exact path="/wishlist">
             <h1>List de souhaits</h1>
           </Route>
           <Route exact path="/cart">
             <h1>Cart</h1>
+          </Route>
+          <Route exact path="/help-and-faq">
+            <h1>Aide et FAQ</h1>
+          </Route>
+          <Route exact path="/catalogue-request">
+            <h1>Demander un catalogue</h1>
           </Route>
         </Switch>
       </Router>

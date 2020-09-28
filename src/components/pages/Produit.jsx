@@ -79,7 +79,7 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                <p>Ajouter au pannier</p>
+                {/* <button onClick={addCart}>Ajouter au pannier</button> */}
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
@@ -94,7 +94,7 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                <p>Ajouter au pannier</p>
+                {/* <button onClick={addCart}>Ajouter au pannier</button> */}
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>

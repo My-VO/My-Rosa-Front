@@ -14,10 +14,10 @@ function Header() {
       <div className="header__announcement">
         <div className="header__announcement__container">
           <span>03 45 67 89 12</span>
-          <Link to="#">
+          <Link to="/help-and-faq">
             <span>AIDE ET FAQ</span>
           </Link>
-          <Link to="#">
+          <Link to="/catalogue-request">
             <span>DEMANDER UN CATALOGUE</span>
           </Link>
           <form>
@@ -42,17 +42,17 @@ function Header() {
           </Link>
         </div>
         <nav className="header__masthead__navbar">
-          <Link to="/items">
+          <Link className="link" to="/items">
             <span>Rosiers</span>
           </Link>
-          <Link to="/advice-and-inspiration">
+          <Link className="link" to="/advice-and-inspiration">
             <span>
               Conseils et
               <br />
               inspiration
             </span>
           </Link>
-          <Link to="/about-us">
+          <Link className="link" to="/about-us">
             <span>À propos</span>
           </Link>
         </nav>
@@ -73,11 +73,14 @@ function Header() {
               <SearchIcon className="header__masthead__misc__search-bar__button__icon" />
             </button>
           </form>
-          <Link className="header__masthead__misc__link" to="/account/login">
+          <Link
+            className="link header__masthead__misc__link"
+            to="/account/login"
+          >
             <CompteIcon className="header__masthead__misc__link__icon" />
             <span>Compte</span>
           </Link>
-          <Link className="header__masthead__misc__link" to="/wishlist">
+          <Link className="link header__masthead__misc__link" to="/wishlist">
             <WishlistIcon className="header__masthead__misc__link__icon" />
             <span>
               Liste de
@@ -86,8 +89,11 @@ function Header() {
             </span>
           </Link>
           {/* Panier avec numero */}
-          <Link className="header__masthead__misc__link" to="/cart">
-            <CartIcon className="header__masthead__misc__link__icon" />
+          <Link className="link header__masthead__misc__link" to="/cart">
+            <div className="link header__masthead__misc__link__cart">
+              <CartIcon className="header__masthead__misc__link__icon" />
+              <span>0</span>
+            </div>
             <span>Cart</span>
           </Link>
         </div>
