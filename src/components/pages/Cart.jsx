@@ -9,7 +9,11 @@ const Cart = () => {
 
   const totalPrice = cart.reduce(
     (accumulator, curr) =>
-      (parseFloat(accumulator) + parseFloat(curr.pricePot)).toFixed(2),
+      (
+        parseFloat(accumulator) +
+        parseFloat(curr.pricePot) +
+        parseFloat(curr.priceRoot)
+      ).toFixed(2),
     0
   );
   return (

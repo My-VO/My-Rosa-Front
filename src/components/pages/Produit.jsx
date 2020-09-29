@@ -24,13 +24,20 @@ const Item = () => {
     idealFor,
     pricePot,
     priceRoot,
+    pot,
   } = item;
 
   const [loading, setLoading] = useState(true);
 
   const [cart, setCart] = useContext(CartContext);
 
-  const addToCart = () => {
+  const addPotToCart = () => {
+    item.pot = true;
+    setCart((currentState) => [...currentState, item]);
+  };
+
+  const addRacineToCart = () => {
+    item.pot = false;
     setCart((currentState) => [...currentState, item]);
   };
 
@@ -87,12 +94,12 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                <button onClick={addToCart}>Ajouter au pannier</button>
+                <button onClick={addPotToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
           </div>
-          {/* <div>
+          <div>
             <img />
             <div>
               <div>
@@ -102,11 +109,11 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
-                <button onClick={addToCart}>Ajouter au pannier</button>
+                <button onClick={addRacineToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
-          </div> */}
+          </div>
         </div>
         <hr />
         <div id="details">
