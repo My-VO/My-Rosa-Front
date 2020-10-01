@@ -31,15 +31,12 @@ const Produits = () => {
       <div>
         {items.map((item) => (
           <div key={item.itemId}>
-            <Link
-              to={`/items/${item.itemId}`}
-              style={{ textDecoration: 'none' }}
-            >
+            <Link to={`/items/${item.name}`} style={{ textDecoration: 'none' }}>
               <img src={item.PicturesItems[0].picture} alt={item.name} />
               <h4>{item.name.toUpperCase()}</h4>
               <p>{item.variety}</p>
-              <p>{item.stockQuantityPot} en stock</p>
-              <p>{item.pricePot} €</p>
+              <p>{item.stockQuantity} en stock</p>
+              <p>{item.price} €</p>
             </Link>
           </div>
         ))}

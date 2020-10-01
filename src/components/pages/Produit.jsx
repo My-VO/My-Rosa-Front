@@ -8,12 +8,11 @@ import { CartContext } from '../CartContext';
 const API = process.env.REACT_APP_API;
 
 const Item = () => {
-  const { itemId } = useParams();
+  const { name } = useParams();
 
   const [item, setItem] = useState('');
   const {
     PicturesItems,
-    name,
     variety,
     color,
     perfume,
@@ -22,8 +21,7 @@ const Item = () => {
     description,
     plantationCare,
     idealFor,
-    pricePot,
-    priceRoot,
+    price,
     pot,
   } = item;
 
@@ -43,7 +41,7 @@ const Item = () => {
 
   useEffect(() => {
     const fetchItem = async () => {
-      const result = await axios(`${API}/items/${itemId}`);
+      const result = await axios(`${API}/items/${name}`);
 
       console.log('result.item : ', result);
 
@@ -51,7 +49,7 @@ const Item = () => {
       setLoading(false);
     };
     fetchItem();
-  }, [itemId]);
+  }, [name]);
 
   if (loading) {
     return 'Chargement...';
@@ -89,7 +87,7 @@ const Item = () => {
             <div>
               <div>
                 <p>En Conteneur de 4L/5L</p>
-                <p>{parseFloat(pricePot).toFixed(2)} €</p>
+                <p>{parseFloat(price).toFixed(2)} €</p>
               </div>
               <p>Livraison - novembre 2020</p>
               <div>
@@ -104,7 +102,7 @@ const Item = () => {
             <div>
               <div>
                 <p>À Racines Nues</p>
-                <p>{parseFloat(priceRoot).toFixed(2)} €</p>
+                <p>{parseFloat(price).toFixed(2)} €</p>
               </div>
               <p>Livraison - novembre 2020</p>
               <div>
