@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import AuthContext from '../context/auth';
 
 const API = process.env.REACT_APP_API;
 
 function Login() {
-  const dispatch = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const initialState = {
     email: '',
@@ -32,8 +34,13 @@ function Login() {
     });
     fetch(`${API}/signin`, {
       method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: data.email, password: data.password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+      }),
     })
       .then((res) => {
         if (res.ok) {
@@ -51,9 +58,18 @@ function Login() {
         setData({
           ...data,
           isSubmitting: false,
-          errorMessage: error.message || error.statusTest,
+          errorMessage: error.message || error.statusText,
         });
       });
+  };
+
+  const history = useHistory();
+  const logOut = async (event) => {
+    event.preventDefault();
+    dispatch({
+      type: 'LOGOUT',
+    });
+    history.push('/');
   };
 
   return (
@@ -90,6 +106,10 @@ function Login() {
           {data.isSubmitting ? 'Loading...' : 'Login'}
         </button>
       </form>
+
+      <a href="/login" onClick={logOut}>
+        Déconnexion
+      </a>
     </div>
   );
 }

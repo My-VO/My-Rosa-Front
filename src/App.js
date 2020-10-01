@@ -23,11 +23,11 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      localStorage.setItem('token', action.payload.data.token);
+      localStorage.setItem('token', JSON.stringify(action.payload.token));
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.data.token,
+        token: action.payload.token,
       };
     case 'LOGOUT':
       localStorage.clear();
@@ -45,14 +45,14 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <div>
-      <AuthContext.Provider
-        value={{
-          state,
-          dispatch,
-        }}
-      >
-        <CartProvider>
+    <AuthContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
+      <CartProvider>
+        <div>
           <Router>
             <Header />
             <Switch>
@@ -82,9 +82,9 @@ function App() {
             </Switch>
           </Router>
           <Footer />
-        </CartProvider>
-      </AuthContext.Provider>
-    </div>
+        </div>
+      </CartProvider>
+    </AuthContext.Provider>
   );
 }
 
