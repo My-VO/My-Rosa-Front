@@ -12,6 +12,7 @@ import Items from './components/pages/Produits';
 import Item from './components/pages/Produit';
 import Cart from './components/pages/Cart';
 import Login from './components/pages/Login';
+import Default from './components/pages/Default';
 
 import './App.scss';
 
@@ -79,6 +80,7 @@ function App() {
               <Route exact path="/catalogue-request">
                 <h1>Demander un catalogue</h1>
               </Route>
+              <Route component={Default} />
             </Switch>
           </Router>
           <Footer />
