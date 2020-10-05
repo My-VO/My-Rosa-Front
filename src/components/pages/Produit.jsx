@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
-import { CartConsumer } from '../context/CartContext';
+import { CartConsumer, CartContext } from '../context/CartContext';
 
 const API = process.env.REACT_APP_API;
 
@@ -15,6 +15,20 @@ const Item = () => {
 
   const [quantityPot, setQuantityPot] = useState(0);
   const [quantityRoot, setQuantityRoot] = useState(0);
+
+  const [product, setProduct] = useState([]);
+
+  console.log('product: ', product);
+
+  const [cart, setCart] = useContext(CartContext);
+
+  const addPotToCart = () => {
+    setProduct((p) => [...p, itemPot]);
+
+    setCart((currentState) => [...currentState, itemPot]);
+
+    console.log('cart Pot : ', cart);
+  };
 
   const [loading, setLoading] = useState(true);
 
@@ -45,13 +59,26 @@ const Item = () => {
     };
   }
 
-  let quantityRootDecrementHandle = '';
-  if (quantityPot > 0) {
-    quantityRootDecrementHandle = () => {
-      setQuantityPot(quantityPot - 1);
+  let quantityPotIncrementHandle = '';
+  if (quantityPot < itemPot.stockQuantity) {
+    quantityPotIncrementHandle = () => {
+      setQuantityPot(quantityPot + 1);
     };
   }
 
+  let quantityRootDecrementHandle = '';
+  if (quantityPot > 0) {
+    quantityRootDecrementHandle = () => {
+      setQuantityRoot(quantityPot - 1);
+    };
+  }
+
+  let quantityRootIncrementHandle = '';
+  if (quantityRoot < itemRoot.stockQuantity) {
+    quantityRootIncrementHandle = () => {
+      setQuantityRoot(quantityRoot + 1);
+    };
+  }
   return (
     <>
       {itemPot.PicturesItems &&
@@ -98,24 +125,16 @@ const Item = () => {
                 <div>
                   <button onClick={quantityPotDecrementHandle}>-</button>
                   <input min="0" type="number" value={quantityPot} />
-                  <button onClick={() => setQuantityPot(quantityPot + 1)}>
-                    +
-                  </button>
+                  <button onClick={quantityPotIncrementHandle}>+</button>
                 </div>
-                <div>
+                {/* <div>
                   <CartConsumer>
                     {(value) => {
                       return <h1>{value}</h1>;
                     }}
                   </CartConsumer>
-                </div>
-                <button
-                  onClick={() =>
-                    alert(`${itemPot.itemId}:${quantityPot * itemPot.price}`)
-                  }
-                >
-                  Ajouter au pannier
-                </button>
+                </div> */}
+                <button onClick={addPotToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
@@ -124,7 +143,7 @@ const Item = () => {
             <img />
             <div>
               <div>
-                <p>À Roots Nues</p>
+                <p>À Racines Nues</p>
                 <p>{parseFloat(itemRoot.price).toFixed(2)} €</p>
               </div>
               <p>Livraison - novembre 2020</p>
@@ -133,9 +152,7 @@ const Item = () => {
                 <div>
                   <button onClick={quantityRootDecrementHandle}>-</button>
                   <input min="0" type="number" value={quantityRoot} />
-                  <button onClick={() => setQuantityRoot(quantityRoot + 1)}>
-                    +
-                  </button>
+                  <button onClick={quantityRootIncrementHandle}>+</button>
                 </div>
                 <button
                   onClick={() =>

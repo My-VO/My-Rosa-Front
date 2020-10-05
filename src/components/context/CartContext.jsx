@@ -10,8 +10,8 @@ export const CartProvider = (props) => {
   console.log('props.children: ', children);
   return (
     <>
-      {/* <CartContext.Provider value={[cart, setCart]}> */}
-      <CartContext.Provider value="hello from context">
+      <CartContext.Provider value={[cart, setCart]}>
+        {/* <CartContext.Provider value="hello from context"> */}
         {children}
       </CartContext.Provider>
     </>
