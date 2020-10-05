@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
+import { CartConsumer } from '../context/CartContext';
 
 const API = process.env.REACT_APP_API;
 
@@ -84,10 +85,17 @@ const Item = () => {
                   <button onClick={() => setQuantityPot(quantityPot - 1)}>
                     -
                   </button>
-                  <p>{quantityPot}</p>
+                  <input min="0" type="number" value={quantityPot} />
                   <button onClick={() => setQuantityPot(quantityPot + 1)}>
                     +
                   </button>
+                </div>
+                <div>
+                  <CartConsumer>
+                    {(value) => {
+                      return <h1>{value}</h1>;
+                    }}
+                  </CartConsumer>
                 </div>
                 <button>Ajouter au pannier</button>
               </div>
@@ -103,12 +111,12 @@ const Item = () => {
               </div>
               <p>Livraison - novembre 2020</p>
               <div>
-                <p>Quantité</p>{' '}
+                <p>Quantité</p>
                 <div>
                   <button onClick={() => setQuantityRoot(quantityRoot - 1)}>
                     -
                   </button>
-                  <p>{quantityRoot}</p>
+                  <input min="0" type="number" value={quantityRoot} />
                   <button onClick={() => setQuantityRoot(quantityRoot + 1)}>
                     +
                   </button>

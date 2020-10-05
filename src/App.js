@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { CartProvider } from './components/CartContext.jsx';
+import { CartProvider } from './components/context/CartContext.jsx';
 
 import AuthContext from './components/context/auth';
 import Header from './components/Header';
