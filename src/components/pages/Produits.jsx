@@ -11,9 +11,7 @@ const Produits = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`${API}/items/`);
-
-      console.log('result : ', result);
+      const result = await axios.get(`${API}/items/`);
 
       setItems(result.data);
       setLoading(false);
