@@ -97,7 +97,13 @@ const Item = () => {
                     }}
                   </CartConsumer>
                 </div>
-                <button>Ajouter au pannier</button>
+                <button
+                  onClick={() =>
+                    alert(`${itemPot.itemId}:${quantityPot * itemPot.price}`)
+                  }
+                >
+                  Ajouter au pannier
+                </button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
@@ -121,7 +127,13 @@ const Item = () => {
                     +
                   </button>
                 </div>
-                <button>Ajouter au pannier</button>
+                <button
+                  onClick={() =>
+                    alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)
+                  }
+                >
+                  Ajouter au pannier
+                </button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
