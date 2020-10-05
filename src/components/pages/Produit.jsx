@@ -38,6 +38,20 @@ const Item = () => {
     return 'Chargement...';
   }
 
+  let quantityPotDecrementHandle = '';
+  if (quantityPot > 0) {
+    quantityPotDecrementHandle = () => {
+      setQuantityPot(quantityPot - 1);
+    };
+  }
+
+  let quantityRootDecrementHandle = '';
+  if (quantityPot > 0) {
+    quantityRootDecrementHandle = () => {
+      setQuantityPot(quantityPot - 1);
+    };
+  }
+
   return (
     <>
       {itemPot.PicturesItems &&
@@ -82,9 +96,7 @@ const Item = () => {
               <div>
                 <p>Quantité</p>
                 <div>
-                  <button onClick={() => setQuantityPot(quantityPot - 1)}>
-                    -
-                  </button>
+                  <button onClick={quantityPotDecrementHandle}>-</button>
                   <input min="0" type="number" value={quantityPot} />
                   <button onClick={() => setQuantityPot(quantityPot + 1)}>
                     +
@@ -119,9 +131,7 @@ const Item = () => {
               <div>
                 <p>Quantité</p>
                 <div>
-                  <button onClick={() => setQuantityRoot(quantityRoot - 1)}>
-                    -
-                  </button>
+                  <button onClick={quantityRootDecrementHandle}>-</button>
                   <input min="0" type="number" value={quantityRoot} />
                   <button onClick={() => setQuantityRoot(quantityRoot + 1)}>
                     +
