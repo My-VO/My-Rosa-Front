@@ -10,27 +10,32 @@ const Item = () => {
 
   const [itemPot, setItemPot] = useState({});
 
-  const [itemRacine, setItemRacine] = useState({});
+  const [itemRoot, setItemRoot] = useState({});
+
+  const [quantityPot, setQuantityPot] = useState(0);
+  const [quantityRoot, setQuantityRoot] = useState(0);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchItem = async () => {
       const result = await axios(`${API}/items/${name}`);
 
-      console.log('result: ', result);
-
       setItemPot(result.data[0]);
 
-      console.log(
-        'result.data[0].PicturesItems) ',
-        result.data[0].PicturesItems
-      );
-      console.log('result.data[0]: ', result.data[0]);
+      setItemRoot(result.data[1]);
 
-      setItemRacine(result.data[1]);
-      // setLoading(false);
+      document.title = `Quantité du rosier en conteneur ${quantityPot}`;
+      document.title = `Quantité du rosier à racines ${quantityRoot}`;
+
+      setLoading(false);
     };
     fetchItem();
   }, [name]);
+
+  if (loading) {
+    return 'Chargement...';
+  }
 
   return (
     <>
@@ -75,6 +80,15 @@ const Item = () => {
               <p>Livraison - novembre 2020</p>
               <div>
                 <p>Quantité</p>
+                <div>
+                  <button onClick={() => setQuantityPot(quantityPot - 1)}>
+                    -
+                  </button>
+                  <p>{quantityPot}</p>
+                  <button onClick={() => setQuantityPot(quantityPot + 1)}>
+                    +
+                  </button>
+                </div>
                 <button>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
@@ -84,12 +98,22 @@ const Item = () => {
             <img />
             <div>
               <div>
-                <p>À Racines Nues</p>
-                <p>{parseFloat(itemRacine.price).toFixed(2)} €</p>
+                <p>À Roots Nues</p>
+                <p>{parseFloat(itemRoot.price).toFixed(2)} €</p>
               </div>
               <p>Livraison - novembre 2020</p>
               <div>
-                <p>Quantité</p> <button>Ajouter au pannier</button>
+                <p>Quantité</p>{' '}
+                <div>
+                  <button onClick={() => setQuantityRoot(quantityRoot - 1)}>
+                    -
+                  </button>
+                  <p>{quantityRoot}</p>
+                  <button onClick={() => setQuantityRoot(quantityRoot + 1)}>
+                    +
+                  </button>
+                </div>
+                <button>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
@@ -180,7 +204,7 @@ export default Item;
 //     setCart((currentState) => [...currentState, item]);
 //   };
 
-//   const addRacineToCart = () => {
+//   const addRootToCart = () => {
 //     item.pot = false;
 //     setCart((currentState) => [...currentState, item]);
 //   };
@@ -247,13 +271,13 @@ export default Item;
 //             <img />
 //             <div>
 //               <div>
-//                 <p>À Racines Nues</p>
+//                 <p>À Roots Nues</p>
 //                 <p>{parseFloat(price).toFixed(2)} €</p>
 //               </div>
 //               <p>Livraison - novembre 2020</p>
 //               <div>
 //                 <p>Quantité</p>
-//                 <button onClick={addRacineToCart}>Ajouter au pannier</button>
+//                 <button onClick={addRootToCart}>Ajouter au pannier</button>
 //               </div>
 //               <p>Ajouter à la liste de souhaits</p>
 //             </div>
