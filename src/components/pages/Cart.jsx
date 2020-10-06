@@ -7,27 +7,9 @@ const Cart = () => {
 
   console.log('cart : ', cart);
 
-  const totalPrice = cart.reduce(
-    (accumulator, curr) =>
-      (
-        parseFloat(accumulator) +
-        parseFloat(curr.pricePot) +
-        parseFloat(curr.priceRoot)
-      ).toFixed(2),
-    0
-  );
-
   let quantity = 0;
 
-  if (!cart) {
-    return (
-      <div>
-        <span>Items in cart : {quantity}</span>
-        <br />
-        <span>Total price : {totalPrice}</span>
-      </div>
-    );
-  }
+  let totalPrice = 0;
 
   const cartOPtions = Object.keys(cart).forEach(function (key) {
     console.log('cart[key] : ', cart[key]);
@@ -35,31 +17,18 @@ const Cart = () => {
     quantity += parseFloat(cart[key].quantityPot);
 
     console.log('quantity : ', quantity);
-    console.log('typeof quantity : ', typeof quantity);
+
+    totalPrice += parseFloat(cart[key].quantityPot * cart[key].itemPot.price);
   });
 
+  const totalPriceFixed2 = totalPrice.toFixed(2);
   return (
     <div>
       <span>Items in cart : {quantity}</span>
       <br />
-      <span>Total price : {totalPrice}</span>
+      <span>Total price : {totalPriceFixed2}</span>
     </div>
   );
-
-  // console.log('cart[0] : ', cart[0]);
-
-  // const quantity = parseFloat(cart[0].quantityPot);
-
-  // console.log('quantity : ', quantity);
-  // console.log('typeof quantity : ', typeof quantity);
-
-  // return (
-  //   <div>
-  //     <span>Items in cart : {quantity}</span>
-  //     <br />
-  //     <span>Total price : {totalPrice}</span>
-  //   </div>
-  // );
 };
 
 export default Cart;
