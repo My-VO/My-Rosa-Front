@@ -1,3 +1,7 @@
+// onClick={() =>
+//   alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)
+// }
+
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -23,11 +27,25 @@ const Item = () => {
   const [cart, setCart] = useContext(CartContext);
 
   const addPotToCart = () => {
-    setProduct((p) => [...p, itemPot]);
+    setProduct((p, q) => [
+      { ...p, ...q },
+      { itemPot, quantityPot },
+    ]);
 
-    setCart((currentState) => [...currentState, itemPot]);
+    setCart((currentState) => [...currentState, { itemPot, quantityPot }]);
 
     console.log('cart Pot : ', cart);
+  };
+
+  const addRootToCart = () => {
+    setProduct((p, q) => [
+      { ...p, ...q },
+      { itemRoot, quantityRoot },
+    ]);
+
+    setCart((currentState) => [...currentState, { itemRoot, quantityRoot }]);
+
+    console.log('cart Root : ', cart);
   };
 
   const [loading, setLoading] = useState(true);
@@ -154,13 +172,7 @@ const Item = () => {
                   <input min="0" type="number" value={quantityRoot} />
                   <button onClick={quantityRootIncrementHandle}>+</button>
                 </div>
-                <button
-                  onClick={() =>
-                    alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)
-                  }
-                >
-                  Ajouter au pannier
-                </button>
+                <button onClick={addRootToCart}>Ajouter au pannier</button>
               </div>
               <p>Ajouter à la liste de souhaits</p>
             </div>
