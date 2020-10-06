@@ -13,6 +13,10 @@ const API = process.env.REACT_APP_API;
 const Item = () => {
   const { name } = useParams();
 
+  const [item, setItem] = useState([]);
+
+  console.log('item : ', item);
+
   const [itemPot, setItemPot] = useState({});
 
   const [itemRoot, setItemRoot] = useState({});
@@ -53,6 +57,10 @@ const Item = () => {
   useEffect(() => {
     const fetchItem = async () => {
       const result = await axios(`${API}/items/${name}`);
+
+      const resultOptions = Object.keys(result.data).forEach(function (key) {
+        setItem(result.data[key]);
+      });
 
       setItemPot(result.data[0]);
 
@@ -100,9 +108,9 @@ const Item = () => {
   return (
     <>
       {itemPot.PicturesItems &&
-        itemPot.PicturesItems.map((item) => (
-          <div key={item.id}>
-            <img src={item.picture} alt={name} />
+        itemPot.PicturesItems.map((i) => (
+          <div key={i.id}>
+            <img src={i.picture} alt={name} />
           </div>
         ))}
 
