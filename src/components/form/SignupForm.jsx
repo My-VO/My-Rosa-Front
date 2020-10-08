@@ -8,10 +8,13 @@ import validate from '../validate/Signup.Validate';
 const API = process.env.REACT_APP_API;
 
 const SignupForm = () => {
-  const { handleInputChange, handleFormSubmit, values, errors } = useFrom(
-    submit,
-    validate
-  );
+  const {
+    handleInputChange,
+    handleFormSubmit,
+    values,
+    setValues,
+    errors,
+  } = useFrom(submit, validate);
 
   const history = useHistory();
 
@@ -27,7 +30,14 @@ const SignupForm = () => {
         history.push('/account/login');
       }
     } catch (error) {
-      console.log('Error signup : ', error);
+      setValues({
+        ...values,
+        errorMessage: error.response.data.description,
+      });
+      console.log(
+        'Error signup : ',
+        `${error.response.data.title} : ${error.response.data.description}`
+      );
     }
   }
 
@@ -40,6 +50,9 @@ const SignupForm = () => {
         action={`${API}/signup`}
       >
         <div>
+          {values.errorMessage && (
+            <p className="error">{values.errorMessage}</p>
+          )}
           <label>Prénom</label>
           <div>
             <input
