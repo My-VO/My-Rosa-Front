@@ -1,5 +1,4 @@
-import Axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,10 +8,13 @@ import validate from '../validate/Signup.Validate';
 const API = process.env.REACT_APP_API;
 
 const SignupForm = () => {
-  const { handleChange, handleSubmit, values, errors } = useFrom(
-    submit,
-    validate
-  );
+  const {
+    handleInputChange,
+    handleFormSubmit,
+    values,
+    setValues,
+    errors,
+  } = useFrom(submit, validate);
 
   const history = useHistory();
 
@@ -28,19 +30,29 @@ const SignupForm = () => {
         history.push('/account/login');
       }
     } catch (error) {
-      console.log('Error signup : ', error);
+      setValues({
+        ...values,
+        errorMessage: error.response.data.description,
+      });
+      console.log(
+        'Error signup : ',
+        `${error.response.data.title} : ${error.response.data.description}`
+      );
     }
   }
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
         noValidate
         method="POST"
         action={`${API}/signup`}
       >
         <div>
+          {values.errorMessage && (
+            <p className="error">{values.errorMessage}</p>
+          )}
           <label>Prénom</label>
           <div>
             <input
@@ -48,7 +60,7 @@ const SignupForm = () => {
               name="firstName"
               type="text"
               value={values.firstName}
-              onChange={handleChange}
+              onChange={handleInputChange}
             ></input>
             {errors.firstName && <p className="error">{errors.firstName}</p>}
           </div>
@@ -59,7 +71,7 @@ const SignupForm = () => {
               name="lastName"
               type="text"
               value={values.lastName}
-              onChange={handleChange}
+              onChange={handleInputChange}
             ></input>
             {errors.lastName && <p className="error">{errors.lastName}</p>}
           </div>
@@ -70,7 +82,7 @@ const SignupForm = () => {
               name="email"
               type="email"
               value={values.email}
-              onChange={handleChange}
+              onChange={handleInputChange}
             ></input>
             {errors.email && <p className="error">{errors.email}</p>}
           </div>
@@ -81,7 +93,7 @@ const SignupForm = () => {
               name="password"
               type="password"
               value={values.password}
-              onChange={handleChange}
+              onChange={handleInputChange}
             ></input>
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
@@ -92,14 +104,14 @@ const SignupForm = () => {
               name="confirmedPassword"
               type="password"
               value={values.confirmedPassword}
-              onChange={handleChange}
+              onChange={handleInputChange}
             ></input>
             {errors.confirmedPassword && (
               <p className="error">{errors.confirmedPassword}</p>
             )}
           </div>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">CRÉER UN COMPTE</button>
       </form>
     </div>
   );

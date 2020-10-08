@@ -7,12 +7,14 @@ const useFrom = (callback, validate) => {
     email: '',
     password: '',
     confirmedPassword: '',
+    isSubmitting: false,
+    errorMessage: null,
   });
   const [errors, setErrors] = useState({});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (ev) => {
+  const handleInputChange = (ev) => {
     const { name, value } = ev.target;
 
     setValues({
@@ -21,7 +23,7 @@ const useFrom = (callback, validate) => {
     });
   };
 
-  const handleSubmit = (ev) => {
+  const handleFormSubmit = (ev) => {
     ev.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
@@ -35,9 +37,10 @@ const useFrom = (callback, validate) => {
   }, [errors]);
 
   return {
-    handleChange,
-    handleSubmit,
+    handleInputChange,
+    handleFormSubmit,
     values,
+    setValues,
     errors,
   };
 };
