@@ -37,8 +37,6 @@ const Item = () => {
     ]);
 
     setCart((currentState) => [...currentState, { itemPot, quantityPot }]);
-
-    console.log('cart Pot : ', cart);
   };
 
   const addRootToCart = () => {
@@ -48,11 +46,7 @@ const Item = () => {
     ]);
 
     setCart((currentState) => [...currentState, { itemRoot, quantityRoot }]);
-
-    console.log('cart Root : ', cart);
   };
-
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -66,13 +60,19 @@ const Item = () => {
 
       setItemRoot(result.data[1]);
 
-      document.title = `Quantité du rosier en conteneur ${quantityPot}`;
-      document.title = `Quantité du rosier à racines ${quantityRoot}`;
+      document.title = `Quantité du rosier en conteneur ${quantityPot} et quantité du rosier à racines ${quantityRoot}`;
 
       setLoading(false);
     };
+
+    console.log('cart Pot : ', cart);
+
+    console.log('cart Root : ', cart);
+
     fetchItem();
   }, [name]);
+
+  const [loading, setLoading] = useState(true);
 
   if (loading) {
     return 'Chargement...';

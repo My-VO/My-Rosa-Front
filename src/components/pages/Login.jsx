@@ -107,9 +107,11 @@ function Login() {
         </button>
       </form>
 
-      <a href="/login" onClick={logOut}>
+      <a href="/account/login" onClick={logOut}>
         Déconnexion
       </a>
+
+      <a href="/account/signup">Créer un compte</a>
     </div>
   );
 }
