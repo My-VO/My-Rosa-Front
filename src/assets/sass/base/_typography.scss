@@ -37,3 +37,12 @@ button {
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: rgba(0, 115, 56, 0.64);
 }
+
+.error {
+    color: #D1132C;
+    font-size: 12px;
+}
+
+.inputError {
+    border-color: #D1132C;
+}

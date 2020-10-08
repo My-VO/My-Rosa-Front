@@ -11,6 +11,7 @@ import Home from './components/pages/Home';
 import Items from './components/pages/Produits';
 import Item from './components/pages/Produit';
 import Cart from './components/pages/Cart';
+import Signup from './components/pages/Signup';
 import Login from './components/pages/Login';
 import Default from './components/pages/Default';
 
@@ -66,9 +67,7 @@ function App() {
               <Route exact path="/about-us">
                 <h1>À propos</h1>
               </Route>
-              <Route exact path="/account/signup">
-                <h1>Signup</h1>
-              </Route>
+              <Route exact path="/account/signup" component={Signup} />
               <Route exact path="/account/login" component={Login} />
               <Route exact path="/wishlist">
                 <h1>List de souhaits</h1>
