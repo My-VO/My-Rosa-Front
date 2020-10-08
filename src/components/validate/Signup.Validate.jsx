@@ -6,7 +6,7 @@ export default function validateSignup(values) {
   }
 
   if (!values.lastName) {
-    errors.firstName = 'Un nom est obligatoire';
+    errors.lastName = 'Un nom est obligatoire';
   }
   if (!values.email) {
     errors.email = 'Une adresse e-mail est obligatoire';

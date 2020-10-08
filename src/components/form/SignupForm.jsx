@@ -1,20 +1,45 @@
+import Axios from 'axios';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
 import useFrom from '../useForm';
 import validate from '../validate/Signup.Validate';
 
-const SignupForm = () => {
-  function submit() {
-    console.log('Submittes successfully');
-  }
+const API = process.env.REACT_APP_API;
 
+const SignupForm = () => {
   const { handleChange, handleSubmit, values, errors } = useFrom(
     submit,
     validate
   );
 
+  const history = useHistory();
+
+  async function submit() {
+    try {
+      const res = await axios.post(`${API}/signup`, {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+      });
+      if (res) {
+        history.push('/account/login');
+      }
+    } catch (error) {
+      console.log('Error signup : ', error);
+    }
+  }
+
   return (
     <div>
-      <form onSubmit={handleSubmit} noValidate>
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        method="POST"
+        action={`${API}/signup`}
+      >
         <div>
           <label>Prénom</label>
           <div>
