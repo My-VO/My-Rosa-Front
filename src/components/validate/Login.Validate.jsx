@@ -4,7 +4,7 @@ export default function validateLogin(values) {
   if (!values.email) {
     errors.email = 'Une adresse e-mail est obligatoire';
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'Une adresse e-mail est obligatoire.';
+    errors.email = 'Une adresse e-mail est obligatoire';
   }
 
   if (!values.password) {

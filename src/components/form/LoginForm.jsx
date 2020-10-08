@@ -74,11 +74,14 @@ function LoginForm() {
   //   };
 
   async function submit() {
+    let result = {};
     try {
-      const result = await axios.post(`${API}/signin`, {
+      result = await axios.post(`${API}/signin`, {
         email: values.email,
         password: values.password,
       });
+
+      console.log('result : ', result);
 
       if (result.status === 200) {
         dispatch({
@@ -88,6 +91,7 @@ function LoginForm() {
         history.push('/');
         return;
       }
+      throw result;
     } catch (error) {
       console.log('Error login : ', error);
     }

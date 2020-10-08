@@ -7,8 +7,8 @@ const useFrom = (callback, validate) => {
     email: '',
     password: '',
     confirmedPassword: '',
-    isSubmitting: false,
-    errorMessage: null,
+    // isSubmitting: false,
+    // errorMessage: null,
   });
   const [errors, setErrors] = useState({});
 
@@ -20,8 +20,8 @@ const useFrom = (callback, validate) => {
     setValues({
       ...values,
       [name]: value,
-      isSubmitting: true,
-      errorMessage: null,
+      // isSubmitting: true,
+      // errorMessage: null,
     });
   };
 
