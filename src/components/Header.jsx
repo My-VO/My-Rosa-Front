@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import SearchIcon from '@material-ui/icons/Search';
+import AuthContext from './context/auth';
+
 import logo from '../assets/images/favicon/logo.png';
 import { ReactComponent as CompteIcon } from '../assets/images/icons/compte.svg';
 import { ReactComponent as WishlistIcon } from '../assets/images/icons/wishlist.svg';
 import { ReactComponent as CartIcon } from '../assets/images/icons/cart.svg';
 
 function Header() {
+  const { state } = useContext(AuthContext);
+
+  console.log('state : ', state);
+  // console.log('state firstName: ', state.user.first_name);
+
   return (
     <section className="header">
       <div className="header__announcement">
@@ -78,7 +85,9 @@ function Header() {
             to="/account/login"
           >
             <CompteIcon className="header__masthead__misc__link__icon" />
-            <span>Compte</span>
+            <span>{!state.user && 'Compte'}</span>
+            <span>{state.user && state.user.first_name}</span>
+            <span>{state.user && state.user.firstName}</span>
           </Link>
           <Link className="link header__masthead__misc__link" to="/wishlist">
             <WishlistIcon className="header__masthead__misc__link__icon" />

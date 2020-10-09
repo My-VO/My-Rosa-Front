@@ -1,6 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import { CartProvider } from './components/context/CartContext.jsx';
 
 import AuthContext from './components/context/auth';
@@ -17,19 +18,30 @@ import Default from './components/pages/Default';
 
 import './App.scss';
 
+const API = process.env.REACT_APP_API;
+
 const initialState = {
-  isAuthenticated: !!localStorage.getItem('token'),
+  isAuthenticated: false,
   token: localStorage.getItem('token') || {},
+  user: {},
 };
 
 const reducer = (state, action) => {
+  console.log('action.payload : ', action.payload);
   switch (action.type) {
     case 'LOGIN':
-      localStorage.setItem('token', JSON.stringify(action.payload.data.token));
+      localStorage.setItem('token', action.payload.data.token);
       return {
         ...state,
         isAuthenticated: true,
         token: action.payload.data.token,
+        user: action.payload.data.user,
+      };
+    case 'LOAD_USER':
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
       };
     case 'LOGOUT':
       localStorage.clear();
@@ -37,6 +49,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         token: null,
+        user: null,
       };
     default:
       return state;
@@ -45,6 +58,25 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        const result = await axios(`${API}/user/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        dispatch({
+          type: 'LOAD_USER',
+          payload: result.data,
+        });
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <AuthContext.Provider
