@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { useHistory } from 'react-router-dom';
-import AuthContext from '../context/auth';
+import AuthContext from '../contexts/AuthContext';
 
 import LoginForm from "../form/LoginForm"
 

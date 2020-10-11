@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
-import AuthContext from '../context/auth';
+import AuthContext from '../contexts/AuthContext';
 import useFrom from '../useForm';
 import validate from '../validate/Login.Validate';
 
