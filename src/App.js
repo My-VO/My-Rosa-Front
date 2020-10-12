@@ -2,17 +2,18 @@ import React, { useReducer, useEffect } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import { CartProvider } from './components/contexts/CartContext.jsx';
+import CartContextProvider from './components/contexts/CartContext.jsx';
 
 import AuthContext from './components/contexts/AuthContext';
 import ProductsContextProvider from './components/contexts/ProductsContext';
+import ProductItemContextProvider from './components/contexts/ProductItemContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './components/pages/Home';
-import Items from './components/pages/Products';
-import Item from './components/pages/Product';
-import Cart from './components/pages/Cart';
+import Items from './components/pages/store/Products';
+import Item from './components/pages/store/Product';
+import Cart from './components/pages/cart/index';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login';
 import Default from './components/pages/Default';
@@ -24,7 +25,7 @@ const API = process.env.REACT_APP_API;
 const initialState = {
   isAuthenticated: false,
   token: null,
-  user: {},
+  user: null,
 };
 
 const reducer = (state, action) => {
@@ -87,38 +88,40 @@ function App() {
       }}
     >
       <ProductsContextProvider>
-        <CartProvider>
-          <div>
-            <Router>
-              <Header />
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/items" component={Items} />
-                <Route path="/items/:name" component={Item} />
-                <Route path="/advice-and-inspiration">
-                  <h1>Conseils et Inspiration</h1>
-                </Route>
-                <Route path="/about-us">
-                  <h1>À propos</h1>
-                </Route>
-                <Route path="/account/signup" component={Signup} />
-                <Route path="/account/login" component={Login} />
-                <Route path="/wishlist">
-                  <h1>List de souhaits</h1>
-                </Route>
-                <Route path="/cart" component={Cart} />
-                <Route path="/help-and-faq">
-                  <h1>Aide et FAQ</h1>
-                </Route>
-                <Route path="/catalogue-request">
-                  <h1>Demander un catalogue</h1>
-                </Route>
-                <Route path="*" component={Default} />
-              </Switch>
-            </Router>
-            <Footer />
-          </div>
-        </CartProvider>
+        <ProductItemContextProvider>
+          <CartContextProvider>
+            <div>
+              <Router>
+                <Header />
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/items" component={Items} />
+                  <Route path="/items/:name" component={Item} />
+                  <Route path="/advice-and-inspiration">
+                    <h1>Conseils et Inspiration</h1>
+                  </Route>
+                  <Route path="/about-us">
+                    <h1>À propos</h1>
+                  </Route>
+                  <Route path="/account/signup" component={Signup} />
+                  <Route path="/account/login" component={Login} />
+                  <Route path="/wishlist">
+                    <h1>List de souhaits</h1>
+                  </Route>
+                  <Route path="/cart" component={Cart} />
+                  <Route path="/help-and-faq">
+                    <h1>Aide et FAQ</h1>
+                  </Route>
+                  <Route path="/catalogue-request">
+                    <h1>Demander un catalogue</h1>
+                  </Route>
+                  <Route path="*" component={Default} />
+                </Switch>
+              </Router>
+              <Footer />
+            </div>
+          </CartContextProvider>
+        </ProductItemContextProvider>
       </ProductsContextProvider>
     </AuthContext.Provider>
   );

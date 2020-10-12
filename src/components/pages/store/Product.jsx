@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { ProductItemContext } from '../../contexts/ProductItemContext';
 
-import axios from 'axios';
+import ItemType from './ItemType';
 
-const API = process.env.REACT_APP_API;
-
-const Item = () => {
+const ProductItem = () => {
   const { name } = useParams();
 
-  useEffect(() => {
-    const fetchItem = async () => {
-      const result = await axios(`${API}/items/${name}`);
-    };
+  console.log('name Product :', name);
 
-    fetchItem();
-  }, [name]);
+  const { productItem } = useContext(ProductItemContext);
 
-  return <>Produit</>;
+  console.log('productItem ; ', productItem);
+  return (
+    <>
+      <div>
+        <h4>{name.toUpperCase()}</h4>
+        {productItem &&
+          productItem.map((item) => <ItemType key={item.itemId} item={item} />)}
+      </div>
+    </>
+  );
 };
 
-export default Item;
+export default ProductItem;
 
 // onClick={() =>
 //   alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)
@@ -29,7 +33,7 @@ export default Item;
 // import { useParams } from 'react-router-dom';
 
 // import axios from 'axios';
-// import { CartConsumer, CartContext } from '../context/CartContext';
+// import { CartConsumer, CartContext } from '../contexts/CartContext';
 
 // const API = process.env.REACT_APP_API;
 

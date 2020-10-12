@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Produits from './Products';
+import Produits from './store/Products';
 
 const Home = () => {
   return (
