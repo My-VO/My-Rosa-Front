@@ -9,9 +9,11 @@ import logo from '../assets/images/favicon/logo.png';
 import { ReactComponent as CompteIcon } from '../assets/images/icons/compte.svg';
 import { ReactComponent as WishlistIcon } from '../assets/images/icons/wishlist.svg';
 import { ReactComponent as CartIcon } from '../assets/images/icons/cart.svg';
+import { CartContext } from './contexts/CartContext';
 
 function Header() {
   const { state } = useContext(AuthContext);
+  const { itemCount } = useContext(CartContext);
 
   console.log('state : ', state);
   // console.log('state firstName: ', state.user.first_name);
@@ -101,7 +103,7 @@ function Header() {
           <Link className="link header__masthead__misc__link" to="/cart">
             <div className="link header__masthead__misc__link__cart">
               <CartIcon className="header__masthead__misc__link__icon" />
-              <span>0</span>
+              <span>{itemCount}</span>
             </div>
             <span>Cart</span>
           </Link>
