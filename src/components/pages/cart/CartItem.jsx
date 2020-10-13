@@ -4,7 +4,15 @@ import { CartContext } from '../../contexts/CartContext';
 const CartItem = ({product}) => {
   console.log('product CartItem : ', product);
 
-  const { PicturesItems, name, variety, type, price, quantity } = product;
+  const {
+    PicturesItems,
+    name,
+    variety,
+    type,
+    price,
+    stockQuantity,
+    quantity,
+  } = product;
   const { increase, decrease, removeProduct } = useContext(CartContext);
 
   return (
@@ -25,9 +33,13 @@ const CartItem = ({product}) => {
         </p>
         <p>Price: {parseFloat(price).toFixed(2)}</p>
         <div>
-          <button onClick={() => increase(product)}>+</button>
+          <button
+            onClick={quantity < stockQuantity && (() => increase(product))}
+          >
+            +
+          </button>
           <p>Qty: {parseFloat(quantity)}</p>
-          <button onClick={() => decrease(product)}>-</button>
+          <button onClick={quantity > 1 && (() => decrease(product))}>-</button>
           <button onClick={() => removeProduct(product)}>X Supprimer</button>
         </div>
         <p>Total: {parseFloat(price * quantity).toFixed(2)}</p>
