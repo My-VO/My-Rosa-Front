@@ -33,6 +33,12 @@ export const CartReducer = (state, action) => {
           ...action.payload,
           quantity: parseFloat(action.quantity),
         });
+      } else {
+        state.cartItems[
+          state.cartItems.findIndex(
+            (item) => item.itemId === action.payload.itemId
+          )
+        ].quantity += parseFloat(action.quantity);
       }
 
       return {
