@@ -3,30 +3,35 @@ import { CartContext } from '../../contexts/CartContext';
 
 const CartItem = ({product}) => {
   console.log('product CartItem : ', product);
-  const { increase, decrease } = useContext(CartContext);
+
+  const { PicturesItems, name, variety, type, price, quantity } = product;
+  const { increase, decrease, removeProduct } = useContext(CartContext);
 
   return (
     <>
       <div>
-        {product.PicturesItems &&
-          product.PicturesItems.map((i) => (
+        {PicturesItems &&
+          // eslint-disable-next-line react/prop-types
+          PicturesItems.map((i) => (
             <div key={i.id}>
-              <img src={i.picture} alt={product.name} />
+              <img src={i.picture} alt={name} />
             </div>
           ))}
       </div>
       <div>
-        <h3>{product.name}</h3>
+        <h3>{name}</h3>
         <p>
-          {product.variety} {product.type}
+          {variety} {type.toLowerCase()}
         </p>
-        <p>Price: {parseFloat(product.price).toFixed(2)}</p>
-        <p>Qty: {product.quantity}</p>
-        <p>Total: {parseFloat(product.price * product.quantity).toFixed(2)}</p>
+        <p>Price: {parseFloat(price).toFixed(2)}</p>
+
+        <p>Total: {parseFloat(price * quantity).toFixed(2)}</p>
       </div>
       <div>
         <button onClick={() => increase(product)}>+</button>
+        <p>Qty: {quantity}</p>
         <button onClick={() => decrease(product)}>-</button>
+        <button onClick={() => removeProduct(product)}>X Supprimer</button>
       </div>
     </>
   );

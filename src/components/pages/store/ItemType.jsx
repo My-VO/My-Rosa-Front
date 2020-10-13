@@ -13,7 +13,6 @@ const ItemType = ({item}) => {
 
   return (
     <>
-      <h3>{item.name}</h3>
       <p>{item.type}</p>
       <p>{parseFloat(item.price).toFixed(2)} €</p>
 

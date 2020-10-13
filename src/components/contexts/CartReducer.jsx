@@ -12,6 +12,7 @@ export const sumItems = (cartItems) => {
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   console.log('itemCount : ', itemCount);
+
   const total = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
@@ -40,6 +41,17 @@ export const CartReducer = (state, action) => {
         cartItems: [...state.cartItems],
       };
 
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        ...sumItems(
+          state.cartItems.filter((item) => item.id !== action.payload.id)
+        ),
+        cartItems: [
+          ...state.cartItems.filter((item) => item.id !== action.payload.id),
+        ],
+      };
+
     case 'INCREASE':
       // eslint-disable-next-line no-param-reassign
       console.log(
@@ -57,6 +69,7 @@ export const CartReducer = (state, action) => {
           )
         ].quantity
       );
+
       state.cartItems[
         state.cartItems.findIndex(
           (item) => item.itemId === action.payload.itemId

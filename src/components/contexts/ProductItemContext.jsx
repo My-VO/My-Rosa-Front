@@ -16,6 +16,8 @@ const ProductItemContextProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(true);
 
+  console.log('router.pathname ProductItemContextProvider : ', router.pathname);
+
   useEffect(() => {
     const fetchProductItem = async () => {
       const result = await axios.get(`${API}/${router.pathname}`);

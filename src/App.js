@@ -2,10 +2,12 @@ import React, { useReducer, useEffect } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+
+import { HelmetProvider } from 'react-helmet-async';
 import CartContextProvider from './components/contexts/CartContext.jsx';
 
 import AuthContext from './components/contexts/AuthContext';
-import ProductsContextProvider from './components/contexts/ProductsContext';
+// import ProductsContextProvider from './components/contexts/ProductsContext';
 import ProductItemContextProvider from './components/contexts/ProductItemContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -81,13 +83,14 @@ function App() {
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{
-        state,
-        dispatch,
-      }}
-    >
-      <ProductsContextProvider>
+    <HelmetProvider>
+      <AuthContext.Provider
+        value={{
+          state,
+          dispatch,
+        }}
+      >
+        {/* <ProductsContextProvider> */}
         <ProductItemContextProvider>
           <CartContextProvider>
             <div>
@@ -122,8 +125,9 @@ function App() {
             </div>
           </CartContextProvider>
         </ProductItemContextProvider>
-      </ProductsContextProvider>
-    </AuthContext.Provider>
+        {/* </ProductsContextProvider> */}
+      </AuthContext.Provider>
+    </HelmetProvider>
   );
 }
 
