@@ -7,9 +7,9 @@ const ItemType = ({item}) => {
   console.log('item : ', item);
   console.log('cartItems : ', cartItems);
 
-  const isInCart = (product) => {
-    return !!cartItems.find((item) => item.itemId === product.itemId);
-  };
+  // const isInCart = (product) => {
+  //   return !!cartItems.find((item) => item.itemId === product.itemId);
+  // };
 
   const [quantity, setQuantity] = useState(0);
 
@@ -38,13 +38,17 @@ const ItemType = ({item}) => {
         <button onClick={quantityIncrementHandle}>+</button>
       </div>
 
-      {isInCart(item) && (
+      <button onClick={() => addItem(item, quantity)}>
+        Ajouter au pannier
+      </button>
+
+      {/* {isInCart(item) && (
         <button onClick={() => increase(item)}>Add more</button>
       )}
 
       {!isInCart(item) && (
         <button onClick={() => addItem(item)}>Add to cart</button>
-      )}
+      )} */}
     </>
   );
 };

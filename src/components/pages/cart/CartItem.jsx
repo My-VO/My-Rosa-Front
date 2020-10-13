@@ -24,14 +24,13 @@ const CartItem = ({product}) => {
           {variety} {type.toLowerCase()}
         </p>
         <p>Price: {parseFloat(price).toFixed(2)}</p>
-
+        <div>
+          <button onClick={() => increase(product)}>+</button>
+          <p>Qty: {parseFloat(quantity)}</p>
+          <button onClick={() => decrease(product)}>-</button>
+          <button onClick={() => removeProduct(product)}>X Supprimer</button>
+        </div>
         <p>Total: {parseFloat(price * quantity).toFixed(2)}</p>
-      </div>
-      <div>
-        <button onClick={() => increase(product)}>+</button>
-        <p>Qty: {quantity}</p>
-        <button onClick={() => decrease(product)}>-</button>
-        <button onClick={() => removeProduct(product)}>X Supprimer</button>
       </div>
     </>
   );

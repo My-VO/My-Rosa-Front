@@ -20,6 +20,7 @@ const Cart = () => {
             <div>Your cart is empty</div>
           )}
         </div>
+        <hr />
         {cartItems.length > 0 && (
           <div>
             <p> Total Items</p>

@@ -9,12 +9,15 @@ export const sumItems = (cartItems) => {
   console.log('cartItems : ', cartItems);
 
   Storage(cartItems);
-  const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const itemCount = cartItems.reduce(
+    (total, item) => total + parseFloat(item.quantity),
+    0
+  );
 
   console.log('itemCount : ', itemCount);
 
   const total = cartItems
-    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .reduce((total, item) => total + item.price * parseFloat(item.quantity), 0)
     .toFixed(2);
 
   console.log('total : ', total);
@@ -24,6 +27,8 @@ export const sumItems = (cartItems) => {
 
 export const CartReducer = (state, action) => {
   console.log('state MY', state);
+  console.log('action.quantity MY', action.quantity);
+
   switch (action.type) {
     case 'ADD_ITEM':
       if (
@@ -31,7 +36,7 @@ export const CartReducer = (state, action) => {
       ) {
         state.cartItems.push({
           ...action.payload,
-          quantity: 1,
+          quantity: parseFloat(action.quantity),
         });
       }
 
