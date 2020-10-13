@@ -17,7 +17,10 @@ const Cart = () => {
           {cartItems.length > 0 ? (
             <CartProducts />
           ) : (
-            <div>Your cart is empty</div>
+            <div>
+              <h3>Le panier est vide</h3>
+              <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
+            </div>
           )}
         </div>
         <hr />
@@ -27,6 +30,8 @@ const Cart = () => {
             <h4>{itemCount}</h4>
             <p>Total Payment</p>
             <h3>{total}</h3>
+            <hr />
+            <button>COMMANDER</button>
           </div>
         )}
       </div>

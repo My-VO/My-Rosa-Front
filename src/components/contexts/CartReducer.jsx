@@ -14,20 +14,15 @@ export const sumItems = (cartItems) => {
     0
   );
 
-  console.log('itemCount : ', itemCount);
-
   const total = cartItems
     .reduce((total, item) => total + item.price * parseFloat(item.quantity), 0)
     .toFixed(2);
-
-  console.log('total : ', total);
 
   return { itemCount, total };
 };
 
 export const CartReducer = (state, action) => {
   console.log('state MY', state);
-  console.log('action.quantity MY', action.quantity);
 
   switch (action.type) {
     case 'ADD_ITEM':
@@ -50,10 +45,14 @@ export const CartReducer = (state, action) => {
       return {
         ...state,
         ...sumItems(
-          state.cartItems.filter((item) => item.id !== action.payload.id)
+          state.cartItems.filter(
+            (item) => item.itemId !== action.payload.itemId
+          )
         ),
         cartItems: [
-          ...state.cartItems.filter((item) => item.id !== action.payload.id),
+          ...state.cartItems.filter(
+            (item) => item.itemId !== action.payload.itemId
+          ),
         ],
       };
 

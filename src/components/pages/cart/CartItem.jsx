@@ -21,7 +21,7 @@ const CartItem = ({product}) => {
       <div>
         <h3>{name}</h3>
         <p>
-          {variety} {type.toLowerCase()}
+          {variety} {type.toLowerCase().replace('4l/5l', '4L/5L')}
         </p>
         <p>Price: {parseFloat(price).toFixed(2)}</p>
         <div>

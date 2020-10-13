@@ -11,10 +11,6 @@ const ProductItem = () => {
   const [productItem, setProductItem] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log('name Product :', name);
-
-  console.log('productItem ; ', productItem);
-
   useEffect(() => {
     const fetchProductItem = async () => {
       const result = await axios.get(`${API}/items/${name}`);
@@ -123,36 +119,6 @@ const ProductItem = () => {
 export default ProductItem;
 
 // ---------------------------------------//-----------------------------
-
-// import React, { useContext } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { ProductItemContext } from '../../contexts/ProductItemContext';
-
-// import ItemType from './ItemType';
-
-// const ProductItem = () => {
-//   const { name } = useParams();
-
-//   console.log('name Product :', name);
-
-//   const { productItem } = useContext(ProductItemContext);
-
-//   console.log('productItem ; ', productItem);
-
-//   return (
-//     <>
-//       <div>
-//         {/* <h4>{name.toUpperCase()}</h4> */}
-//         {productItem &&
-//           productItem.map((item) => <ItemType key={item.itemId} item={item} />)}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default ProductItem;
-
-// -------------------------------//---------------------------
 
 // onClick={() =>
 //   alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)

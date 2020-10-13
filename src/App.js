@@ -7,8 +7,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import CartContextProvider from './components/contexts/CartContext.jsx';
 
 import AuthContext from './components/contexts/AuthContext';
-// import ProductsContextProvider from './components/contexts/ProductsContext';
-import ProductItemContextProvider from './components/contexts/ProductItemContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -90,42 +88,38 @@ function App() {
           dispatch,
         }}
       >
-        {/* <ProductsContextProvider> */}
-        <ProductItemContextProvider>
-          <CartContextProvider>
-            <div>
-              <Router>
-                <Header />
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/items" component={Items} />
-                  <Route path="/items/:name" component={Item} />
-                  <Route path="/advice-and-inspiration">
-                    <h1>Conseils et Inspiration</h1>
-                  </Route>
-                  <Route path="/about-us">
-                    <h1>À propos</h1>
-                  </Route>
-                  <Route path="/account/signup" component={Signup} />
-                  <Route path="/account/login" component={Login} />
-                  <Route path="/wishlist">
-                    <h1>List de souhaits</h1>
-                  </Route>
-                  <Route path="/cart" component={Cart} />
-                  <Route path="/help-and-faq">
-                    <h1>Aide et FAQ</h1>
-                  </Route>
-                  <Route path="/catalogue-request">
-                    <h1>Demander un catalogue</h1>
-                  </Route>
-                  <Route path="*" component={Default} />
-                </Switch>
-              </Router>
-              <Footer />
-            </div>
-          </CartContextProvider>
-        </ProductItemContextProvider>
-        {/* </ProductsContextProvider> */}
+        <CartContextProvider>
+          <div>
+            <Router>
+              <Header />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/items" component={Items} />
+                <Route path="/items/:name" component={Item} />
+                <Route path="/advice-and-inspiration">
+                  <h1>Conseils et Inspiration</h1>
+                </Route>
+                <Route path="/about-us">
+                  <h1>À propos</h1>
+                </Route>
+                <Route path="/account/signup" component={Signup} />
+                <Route path="/account/login" component={Login} />
+                <Route path="/wishlist">
+                  <h1>List de souhaits</h1>
+                </Route>
+                <Route path="/cart" component={Cart} />
+                <Route path="/help-and-faq">
+                  <h1>Aide et FAQ</h1>
+                </Route>
+                <Route path="/catalogue-request">
+                  <h1>Demander un catalogue</h1>
+                </Route>
+                <Route path="*" component={Default} />
+              </Switch>
+            </Router>
+            <Footer />
+          </div>
+        </CartContextProvider>
       </AuthContext.Provider>
     </HelmetProvider>
   );
