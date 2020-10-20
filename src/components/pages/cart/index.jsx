@@ -29,16 +29,9 @@ const Cart = () => {
 
   async function submit() {
     try {
-      const res = await Axios.post(
-        `${API}/orders`,
-        {
-          itemId: cartItems[0].itemId,
-          quantityOrder: cartItems[0].quantity,
-        },
-        {
-          headers: { Authorization: `Bearer ${authState.token}` },
-        }
-      );
+      const res = await Axios.post(`${API}/orders`, cartItems, {
+        headers: { Authorization: `Bearer ${authState.token}` },
+      });
 
       if (res) {
         console.log('Submitted Succesfully');

@@ -7,19 +7,19 @@ const ItemType = ({item}) => {
   console.log('item : ', item);
   console.log('cartItems : ', cartItems);
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantityOrder, setquantityOrder] = useState(1);
 
-  let quantityIncrementHandle = '';
-  if (quantity < item.stockQuantity) {
-    quantityIncrementHandle = () => {
-      setQuantity(quantity + 1);
+  let quantityOrderIncrementHandle = '';
+  if (quantityOrder < item.stockQuantity) {
+    quantityOrderIncrementHandle = () => {
+      setquantityOrder(quantityOrder + 1);
     };
   }
 
-  let quantityDecrementHandle = '';
-  if (quantity > 1) {
-    quantityDecrementHandle = () => {
-      setQuantity(quantity - 1);
+  let quantityOrderDecrementHandle = '';
+  if (quantityOrder > 1) {
+    quantityOrderDecrementHandle = () => {
+      setquantityOrder(quantityOrder - 1);
     };
   }
 
@@ -29,12 +29,12 @@ const ItemType = ({item}) => {
       <p>{parseFloat(item.price).toFixed(2)} €</p>
 
       <div>
-        <button onClick={quantityDecrementHandle}>-</button>
-        <input min="0" type="number" value={quantity} />
-        <button onClick={quantityIncrementHandle}>+</button>
+        <button onClick={quantityOrderDecrementHandle}>-</button>
+        <input min="0" type="number" value={quantityOrder} />
+        <button onClick={quantityOrderIncrementHandle}>+</button>
       </div>
 
-      <button onClick={() => addItem(item, quantity)}>
+      <button onClick={() => addItem(item, quantityOrder)}>
         Ajouter au pannier
       </button>
     </>

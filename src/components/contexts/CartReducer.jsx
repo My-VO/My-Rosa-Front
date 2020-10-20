@@ -10,12 +10,15 @@ export const sumItems = (cartItems) => {
 
   Storage(cartItems);
   const itemCount = cartItems.reduce(
-    (total, item) => total + parseFloat(item.quantity),
+    (total, item) => total + parseFloat(item.quantityOrder),
     0
   );
 
   const total = cartItems
-    .reduce((total, item) => total + item.price * parseFloat(item.quantity), 0)
+    .reduce(
+      (total, item) => total + item.price * parseFloat(item.quantityOrder),
+      0
+    )
     .toFixed(2);
 
   return { itemCount, total };
@@ -31,14 +34,14 @@ export const CartReducer = (state, action) => {
       ) {
         state.cartItems.push({
           ...action.payload,
-          quantity: parseFloat(action.quantity),
+          quantityOrder: parseFloat(action.quantityOrder),
         });
       } else {
         state.cartItems[
           state.cartItems.findIndex(
             (item) => item.itemId === action.payload.itemId
           )
-        ].quantity += parseFloat(action.quantity);
+        ].quantityOrder += parseFloat(action.quantityOrder);
       }
 
       return {
@@ -72,19 +75,19 @@ export const CartReducer = (state, action) => {
       );
 
       console.log(
-        'tutu quantity',
+        'tutu quantityOrder',
         state.cartItems[
           state.cartItems.findIndex(
             (item) => item.itemId === action.payload.itemId
           )
-        ].quantity
+        ].quantityOrder
       );
 
       state.cartItems[
         state.cartItems.findIndex(
           (item) => item.itemId === action.payload.itemId
         )
-      ].quantity += 1;
+      ].quantityOrder += 1;
 
       return {
         ...state,
@@ -97,7 +100,7 @@ export const CartReducer = (state, action) => {
         state.cartItems.findIndex(
           (item) => item.itemId === action.payload.itemId
         )
-      ].quantity -= 1;
+      ].quantityOrder -= 1;
       return {
         ...state,
         ...sumItems(state.cartItems),

@@ -12,8 +12,8 @@ const initialState = { cartItems: storage, ...sumItems(storage) };
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
-  const addItem = (payload, quantity) => {
-    dispatch({ type: 'ADD_ITEM', payload, quantity });
+  const addItem = (payload, quantityOrder) => {
+    dispatch({ type: 'ADD_ITEM', payload, quantityOrder });
   };
 
   const removeProduct = (payload) => {

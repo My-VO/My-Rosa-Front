@@ -121,7 +121,7 @@ export default ProductItem;
 // ---------------------------------------//-----------------------------
 
 // onClick={() =>
-//   alert(`${itemRoot.itemId}:${quantityRoot * itemRoot.price}`)
+//   alert(`${itemRoot.itemId}:${quantityOrderRoot * itemRoot.price}`)
 // }
 
 // import React, { useEffect, useState, useContext } from 'react';
@@ -143,8 +143,8 @@ export default ProductItem;
 
 //   const [itemRoot, setItemRoot] = useState({});
 
-//   const [quantityPot, setQuantityPot] = useState(0);
-//   const [quantityRoot, setQuantityRoot] = useState(0);
+//   const [quantityOrderPot, setquantityOrderPot] = useState(0);
+//   const [quantityOrderRoot, setquantityOrderRoot] = useState(0);
 
 //   const [product, setProduct] = useState([]);
 
@@ -155,19 +155,19 @@ export default ProductItem;
 //   const addPotToCart = () => {
 //     setProduct((p, q) => [
 //       { ...p, ...q },
-//       { itemPot, quantityPot },
+//       { itemPot, quantityOrderPot },
 //     ]);
 
-//     setCart((currentState) => [...currentState, { itemPot, quantityPot }]);
+//     setCart((currentState) => [...currentState, { itemPot, quantityOrderPot }]);
 //   };
 
 //   const addRootToCart = () => {
 //     setProduct((p, q) => [
 //       { ...p, ...q },
-//       { itemRoot, quantityRoot },
+//       { itemRoot, quantityOrderRoot },
 //     ]);
 
-//     setCart((currentState) => [...currentState, { itemRoot, quantityRoot }]);
+//     setCart((currentState) => [...currentState, { itemRoot, quantityOrderRoot }]);
 //   };
 
 //   useEffect(() => {
@@ -182,7 +182,7 @@ export default ProductItem;
 
 //       setItemRoot(result.data[1]);
 
-//       document.title = `Quantité du rosier en conteneur ${quantityPot} et quantité du rosier à racines ${quantityRoot}`;
+//       document.title = `Quantité du rosier en conteneur ${quantityOrderPot} et quantité du rosier à racines ${quantityOrderRoot}`;
 
 //       setLoading(false);
 //     };
@@ -200,31 +200,31 @@ export default ProductItem;
 //     return 'Chargement...';
 //   }
 
-//   let quantityPotDecrementHandle = '';
-//   if (quantityPot > 0) {
-//     quantityPotDecrementHandle = () => {
-//       setQuantityPot(quantityPot - 1);
+//   let quantityOrderPotDecrementHandle = '';
+//   if (quantityOrderPot > 0) {
+//     quantityOrderPotDecrementHandle = () => {
+//       setquantityOrderPot(quantityOrderPot - 1);
 //     };
 //   }
 
-//   let quantityPotIncrementHandle = '';
-//   if (quantityPot < itemPot.stockQuantity) {
-//     quantityPotIncrementHandle = () => {
-//       setQuantityPot(quantityPot + 1);
+//   let quantityOrderPotIncrementHandle = '';
+//   if (quantityOrderPot < itemPot.stockquantityOrder) {
+//     quantityOrderPotIncrementHandle = () => {
+//       setquantityOrderPot(quantityOrderPot + 1);
 //     };
 //   }
 
-//   let quantityRootDecrementHandle = '';
-//   if (quantityPot > 0) {
-//     quantityRootDecrementHandle = () => {
-//       setQuantityRoot(quantityPot - 1);
+//   let quantityOrderRootDecrementHandle = '';
+//   if (quantityOrderPot > 0) {
+//     quantityOrderRootDecrementHandle = () => {
+//       setquantityOrderRoot(quantityOrderPot - 1);
 //     };
 //   }
 
-//   let quantityRootIncrementHandle = '';
-//   if (quantityRoot < itemRoot.stockQuantity) {
-//     quantityRootIncrementHandle = () => {
-//       setQuantityRoot(quantityRoot + 1);
+//   let quantityOrderRootIncrementHandle = '';
+//   if (quantityOrderRoot < itemRoot.stockquantityOrder) {
+//     quantityOrderRootIncrementHandle = () => {
+//       setquantityOrderRoot(quantityOrderRoot + 1);
 //     };
 //   }
 //   return (
@@ -271,9 +271,9 @@ export default ProductItem;
 //               <div>
 //                 <p>Quantité</p>
 //                 <div>
-//                   <button onClick={quantityPotDecrementHandle}>-</button>
-//                   <input min="0" type="number" value={quantityPot} />
-//                   <button onClick={quantityPotIncrementHandle}>+</button>
+//                   <button onClick={quantityOrderPotDecrementHandle}>-</button>
+//                   <input min="0" type="number" value={quantityOrderPot} />
+//                   <button onClick={quantityOrderPotIncrementHandle}>+</button>
 //                 </div>
 //                 {/* <div>
 //                   <CartConsumer>
@@ -298,9 +298,9 @@ export default ProductItem;
 //               <div>
 //                 <p>Quantité</p>
 //                 <div>
-//                   <button onClick={quantityRootDecrementHandle}>-</button>
-//                   <input min="0" type="number" value={quantityRoot} />
-//                   <button onClick={quantityRootIncrementHandle}>+</button>
+//                   <button onClick={quantityOrderRootDecrementHandle}>-</button>
+//                   <input min="0" type="number" value={quantityOrderRoot} />
+//                   <button onClick={quantityOrderRootIncrementHandle}>+</button>
 //                 </div>
 //                 <button onClick={addRootToCart}>Ajouter au pannier</button>
 //               </div>
