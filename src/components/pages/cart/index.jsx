@@ -1,14 +1,69 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
+import Axios from 'axios';
 import CartProducts from './CartProducts';
-
+import { AuthContext } from '../../contexts/AuthContext';
 import { CartContext } from '../../contexts/CartContext';
+import useFrom from '../../useForm';
+import validate from '../../validate/Commander.Validate';
+
+const API = process.env.REACT_APP_API;
 
 const Cart = () => {
+  const { state: authState } = useContext(AuthContext);
   const { total, cartItems, itemCount } = useContext(CartContext);
+
+  const {
+    handleInputChange,
+    handleFormSubmit,
+    values,
+    setValues,
+    errors,
+  } = useFrom(submit, validate);
+  function submit() {
+    console.log('Submit est success');
+  }
+
+  const history = useHistory();
+
+  async function submit() {
+    try {
+      const res = await Axios.post(
+        `${API}/orders`,
+        {
+          itemId: cartItems[0].itemId,
+          quantityOrder: cartItems[0].quantity,
+        },
+        {
+          headers: { Authorization: `Bearer ${authState.token}` },
+        }
+      );
+
+      if (res) {
+        console.log('Submitted Succesfully');
+        console.log('resultats', res);
+        history.push('/orders');
+      }
+    } catch (error) {
+      setValues({
+        ...values,
+        errorMessage: error.response.data.description,
+      });
+
+      if (error.response.status === 401) {
+        setTimeout(() => {
+          history.push('account/login');
+        }, 2000);
+      }
+    }
+  }
+
+  console.log('authState :', authState);
+
   return (
     <>
-      <form noValidate>
+      <form onSubmit={handleFormSubmit} noValidate>
         <div>
           <h1>Cart</h1>
           <p>This is the Cart Page.</p>
@@ -32,6 +87,9 @@ const Cart = () => {
               <p>Total Payment</p>
               <h3>{total}</h3>
               <hr />
+              {values.errorMessage && (
+                <p className="error">{values.errorMessage}</p>
+              )}
               <button type="submit">COMMANDER</button>
             </div>
           )}
