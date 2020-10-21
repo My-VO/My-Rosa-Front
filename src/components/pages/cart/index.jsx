@@ -12,7 +12,7 @@ const API = process.env.REACT_APP_API;
 
 const Cart = () => {
   const { state: authState } = useContext(AuthContext);
-  const { total, cartItems, itemCount } = useContext(CartContext);
+  const { total, cartItems, itemCount, clearCart } = useContext(CartContext);
 
   const { handleFormSubmit, values, setValues } = useFrom(submit, validate);
 
@@ -25,6 +25,7 @@ const Cart = () => {
       });
 
       if (res) {
+        clearCart();
         history.push('/orders');
       }
     } catch (error) {

@@ -6,8 +6,6 @@ const Storage = (cartItems) => {
 };
 
 export const sumItems = (cartItems) => {
-  console.log('cartItems : ', cartItems);
-
   Storage(cartItems);
   const itemCount = cartItems.reduce(
     (total, item) => total + parseFloat(item.quantityOrder),
@@ -25,8 +23,6 @@ export const sumItems = (cartItems) => {
 };
 
 export const CartReducer = (state, action) => {
-  console.log('state MY', state);
-
   switch (action.type) {
     case 'ADD_ITEM':
       if (
@@ -66,23 +62,6 @@ export const CartReducer = (state, action) => {
       };
 
     case 'INCREASE':
-      // eslint-disable-next-line no-param-reassign
-      console.log(
-        'tutu index',
-        state.cartItems.findIndex(
-          (item) => item.itemId === action.payload.itemId
-        )
-      );
-
-      console.log(
-        'tutu quantityOrder',
-        state.cartItems[
-          state.cartItems.findIndex(
-            (item) => item.itemId === action.payload.itemId
-          )
-        ].quantityOrder
-      );
-
       state.cartItems[
         state.cartItems.findIndex(
           (item) => item.itemId === action.payload.itemId
@@ -105,6 +84,11 @@ export const CartReducer = (state, action) => {
         ...state,
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
+      };
+    case 'CLEAR':
+      return {
+        cartItems: [],
+        ...sumItems([]),
       };
     default:
       return state;

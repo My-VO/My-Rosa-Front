@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react';
 
 import { CartContext } from '../../contexts/CartContext';
 
-const ItemType = ({item}) => {
-  const { addItem, cartItems } = useContext(CartContext);
-  console.log('item : ', item);
-  console.log('cartItems : ', cartItems);
+// eslint-disable-next-line react/prop-types
+const ItemType = ({ item }) => {
+  const { addItem } = useContext(CartContext);
 
   const [quantityOrder, setquantityOrder] = useState(1);
 
   let quantityOrderIncrementHandle = '';
+  // eslint-disable-next-line react/prop-types
   if (quantityOrder < item.stockQuantity) {
     quantityOrderIncrementHandle = () => {
       setquantityOrder(quantityOrder + 1);

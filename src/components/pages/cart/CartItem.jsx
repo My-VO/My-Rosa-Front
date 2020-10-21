@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 
-const CartItem = ({product}) => {
-  console.log('product CartItem : ', product);
-
+const CartItem = ({ product }) => {
   const {
     PicturesItems,
     name,
