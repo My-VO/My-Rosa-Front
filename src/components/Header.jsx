@@ -15,9 +15,6 @@ function Header() {
   const { state } = useContext(AuthContext);
   const { itemCount } = useContext(CartContext);
 
-  console.log('state : ', state);
-  // console.log('state firstName: ', state.user.first_name);
-
   return (
     <section className="header">
       <div className="header__announcement">
