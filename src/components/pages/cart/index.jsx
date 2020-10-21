@@ -43,24 +43,24 @@ const Cart = () => {
 
   return (
     <>
-      <div>
-        <h1>Cart</h1>
-        <p>This is the Cart Page.</p>
-      </div>
-      <div>
+      <form noValidate method="POST" action={`${API}/orders`}>
         <div>
-          {cartItems.length > 0 ? (
-            <CartProducts />
-          ) : (
-            <div>
-              <h3>Le panier est vide</h3>
-              <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
-            </div>
-          )}
+          <h1>Cart</h1>
+          <p>This is the Cart Page.</p>
         </div>
-        <hr />
+        <div>
+          <div>
+            {cartItems.length > 0 ? (
+              <CartProducts />
+            ) : (
+              <div>
+                <h3>Le panier est vide</h3>
+                <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
+              </div>
+            )}
+          </div>
+          <hr />
 
-        <form onSubmit={handleFormSubmit} noValidate>
           {cartItems.length > 0 && (
             <div>
               <p> Total Items</p>
@@ -71,11 +71,13 @@ const Cart = () => {
               {values.errorMessage && (
                 <p className="error">{values.errorMessage}</p>
               )}
-              <button type="submit">COMMANDER</button>
+              <button type="submit" onClick={handleFormSubmit}>
+                COMMANDER
+              </button>
             </div>
           )}
-        </form>
-      </div>
+        </div>
+      </form>
     </>
   );
 };

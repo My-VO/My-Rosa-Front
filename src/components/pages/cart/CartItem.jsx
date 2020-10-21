@@ -34,15 +34,21 @@ const CartItem = ({product}) => {
         <p>Price: {parseFloat(price).toFixed(2)}</p>
         <div>
           <button
+            type="button"
             onClick={quantityOrder < stockQuantity && (() => increase(product))}
           >
             +
           </button>
           <p>Qty: {parseFloat(quantityOrder)}</p>
-          <button onClick={quantityOrder > 1 && (() => decrease(product))}>
+          <button
+            type="button"
+            onClick={quantityOrder > 1 && (() => decrease(product))}
+          >
             -
           </button>
-          <button onClick={() => removeProduct(product)}>X Supprimer</button>
+          <button type="button" onClick={() => removeProduct(product)}>
+            X Supprimer
+          </button>
         </div>
         <p>Total: {parseFloat(price * quantityOrder).toFixed(2)}</p>
       </div>
