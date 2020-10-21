@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 
-const CartItem = ({product}) => {
-  console.log('product CartItem : ', product);
-
+const CartItem = ({ product }) => {
   const {
     PicturesItems,
     name,
@@ -11,7 +9,7 @@ const CartItem = ({product}) => {
     type,
     price,
     stockQuantity,
-    quantity,
+    quantityOrder,
   } = product;
   const { increase, decrease, removeProduct } = useContext(CartContext);
 
@@ -34,15 +32,23 @@ const CartItem = ({product}) => {
         <p>Price: {parseFloat(price).toFixed(2)}</p>
         <div>
           <button
-            onClick={quantity < stockQuantity && (() => increase(product))}
+            type="button"
+            onClick={quantityOrder < stockQuantity && (() => increase(product))}
           >
             +
           </button>
-          <p>Qty: {parseFloat(quantity)}</p>
-          <button onClick={quantity > 1 && (() => decrease(product))}>-</button>
-          <button onClick={() => removeProduct(product)}>X Supprimer</button>
+          <p>Qty: {parseFloat(quantityOrder)}</p>
+          <button
+            type="button"
+            onClick={quantityOrder > 1 && (() => decrease(product))}
+          >
+            -
+          </button>
+          <button type="button" onClick={() => removeProduct(product)}>
+            X Supprimer
+          </button>
         </div>
-        <p>Total: {parseFloat(price * quantity).toFixed(2)}</p>
+        <p>Total: {parseFloat(price * quantityOrder).toFixed(2)}</p>
       </div>
     </>
   );
