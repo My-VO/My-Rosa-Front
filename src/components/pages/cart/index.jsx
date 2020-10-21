@@ -14,16 +14,7 @@ const Cart = () => {
   const { state: authState } = useContext(AuthContext);
   const { total, cartItems, itemCount } = useContext(CartContext);
 
-  const {
-    handleInputChange,
-    handleFormSubmit,
-    values,
-    setValues,
-    errors,
-  } = useFrom(submit, validate);
-  function submit() {
-    console.log('Submit est success');
-  }
+  const { handleFormSubmit, values, setValues } = useFrom(submit, validate);
 
   const history = useHistory();
 
@@ -34,8 +25,6 @@ const Cart = () => {
       });
 
       if (res) {
-        console.log('Submitted Succesfully');
-        console.log('resultats', res);
         history.push('/orders');
       }
     } catch (error) {
@@ -47,32 +36,31 @@ const Cart = () => {
       if (error.response.status === 401) {
         setTimeout(() => {
           history.push('account/login');
-        }, 2000);
+        }, 2500);
       }
     }
   }
 
-  console.log('authState :', authState);
-
   return (
     <>
-      <form onSubmit={handleFormSubmit} noValidate>
+      <div>
+        <h1>Cart</h1>
+        <p>This is the Cart Page.</p>
+      </div>
+      <div>
         <div>
-          <h1>Cart</h1>
-          <p>This is the Cart Page.</p>
+          {cartItems.length > 0 ? (
+            <CartProducts />
+          ) : (
+            <div>
+              <h3>Le panier est vide</h3>
+              <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
+            </div>
+          )}
         </div>
-        <div>
-          <div>
-            {cartItems.length > 0 ? (
-              <CartProducts />
-            ) : (
-              <div>
-                <h3>Le panier est vide</h3>
-                <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
-              </div>
-            )}
-          </div>
-          <hr />
+        <hr />
+
+        <form onSubmit={handleFormSubmit} noValidate>
           {cartItems.length > 0 && (
             <div>
               <p> Total Items</p>
@@ -86,8 +74,8 @@ const Cart = () => {
               <button type="submit">COMMANDER</button>
             </div>
           )}
-        </div>
-      </form>
+        </form>
+      </div>
     </>
   );
 };
