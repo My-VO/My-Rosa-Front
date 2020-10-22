@@ -20,8 +20,6 @@ function Orders() {
     fetchOrders();
   }, [authState]);
 
-  console.log('orders : ', orders);
-
   return (
     <>
       <div>
@@ -39,7 +37,7 @@ function Orders() {
                   <div>
                     <span>Montant Total</span>
                     <br />
-                    <span>€</span>
+                    <span>{parseFloat(order.priceTotal).toFixed(2)} €</span>
                   </div>
                   <div>
                     <span>N° de commande</span>
@@ -77,9 +75,7 @@ function Orders() {
                           <p>Quantité: {parseFloat(orderItem.quantityOrder)}</p>
                           <p>
                             Total:{' '}
-                            {parseFloat(
-                              orderItem.Item.price * orderItem.quantityOrder
-                            ).toFixed(2)}
+                            {parseFloat(orderItem.priceTotalItem).toFixed(2)} €
                           </p>
                         </div>
                       </div>
