@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
 
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -32,7 +33,9 @@ function Orders() {
                   <div>
                     <span>Ma commande du</span>
                     <br />
-                    <span>{order.createdAt}</span>
+                    <span>
+                      <Moment format="DD MMM YYYY">{order.createdAt}</Moment>
+                    </span>
                   </div>
                   <div>
                     <span>Montant Total</span>
