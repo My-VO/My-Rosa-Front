@@ -9,6 +9,7 @@ import Item from './components/pages/store/Product';
 import Cart from './components/pages/cart/index';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login';
+import Orders from './components/pages/Orders';
 import Default from './components/pages/Default';
 
 const Routes = () => {
@@ -32,9 +33,7 @@ const Routes = () => {
             <h1>List de souhaits</h1>
           </Route>
           <Route path="/cart" component={Cart} />
-          <Route path="/orders">
-            <h1>Orders</h1>
-          </Route>
+          <Route path="/orders" component={Orders} />
           <Route path="/help-and-faq">
             <h1>Aide et FAQ</h1>
           </Route>

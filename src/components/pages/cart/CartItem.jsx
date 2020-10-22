@@ -16,20 +16,14 @@ const CartItem = ({ product }) => {
   return (
     <>
       <div>
-        {PicturesItems &&
-          // eslint-disable-next-line react/prop-types
-          PicturesItems.map((i) => (
-            <div key={i.id}>
-              <img src={i.picture} alt={name} />
-            </div>
-          ))}
+        <img src={PicturesItems[0].picture} alt={name} />
       </div>
       <div>
-        <h3>{name}</h3>
+        <h3>{name.toUpperCase()}</h3>
         <p>
           {variety} {type.toLowerCase().replace('4l/5l', '4L/5L')}
         </p>
-        <p>Price: {parseFloat(price).toFixed(2)}</p>
+        <p>Prix: {parseFloat(price).toFixed(2)}</p>
         <div>
           <button
             type="button"
@@ -37,7 +31,7 @@ const CartItem = ({ product }) => {
           >
             +
           </button>
-          <p>Qty: {parseFloat(quantityOrder)}</p>
+          <p>Quantité: {parseFloat(quantityOrder)}</p>
           <button
             type="button"
             onClick={quantityOrder > 1 && (() => decrease(product))}
