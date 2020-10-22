@@ -9,6 +9,7 @@ import Item from './components/pages/store/Product';
 import Cart from './components/pages/cart/index';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login';
+import User from './components/pages/User';
 import Orders from './components/pages/Orders';
 import Default from './components/pages/Default';
 
@@ -28,7 +29,8 @@ const Routes = () => {
             <h1>À propos</h1>
           </Route>
           <Route path="/account/signup" component={Signup} />
-          <Route path="/account/login" component={Login} />
+          <Route exact path="/account/login" component={Login} />
+          <Route path="/account/login/user/info" component={User} />
           <Route path="/wishlist">
             <h1>List de souhaits</h1>
           </Route>
