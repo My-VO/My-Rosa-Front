@@ -28,44 +28,52 @@ const ProductItem = () => {
   return (
     <>
       <div>
-        <div>
-          {productItem[0] &&
-            productItem[0].PicturesItems &&
-            productItem[0].PicturesItems.map((i) => (
-              <div key={i.id}>{i && <img src={i.picture} alt={name} />}</div>
-            ))}
+        <div className="product">
+          <div className="product__gallery">
+            {productItem[0] &&
+              productItem[0].PicturesItems &&
+              productItem[0].PicturesItems.map((i) => (
+                <div className="product__gallery_" key={i.id}>
+                  {i && <img src={i.picture} alt={name} />}
+                </div>
+              ))}
+          </div>
+          <div className="product__aside">
+            <div className="product__aside__header">
+              <h2>{productItem[0] && productItem[0].name.toUpperCase()}</h2>
+              <p>{productItem[0] && productItem[0].variety}</p>
+            </div>
+            <hr />
+            <div className="product__aside__details">
+              <p>Couleur: {productItem[0] && productItem[0].color}</p>
+              <p>Parfum: {productItem[0] && productItem[0].perfume}</p>
+              <p>Floraison: {productItem[0] && productItem[0].flowering}</p>
+              <p>
+                Hauteur à maturité: {productItem[0] && productItem[0].size} cm
+              </p>
+            </div>
+            <hr />
+            <div className="product__aside__details">
+              <p>
+                {productItem[0] &&
+                  productItem[0].description &&
+                  productItem[0] &&
+                  productItem[0].description.split('_')[0]}
+                <a href="#description">
+                  <span> En savoir plus</span>
+                </a>
+              </p>
+              <a href="#details">VOIR PLUS DE DÉTAILS</a>
+            </div>
+            <hr />
+            <div className="product__aside__form">
+              {productItem &&
+                productItem.map((item) => (
+                  <ItemType key={item.itemId} item={item} />
+                ))}
+            </div>
+          </div>
         </div>
-        <div>
-          <h4>{productItem[0] && productItem[0].name.toUpperCase()}</h4>
-          <p>{productItem[0] && productItem[0].variety}</p>
-        </div>
-        <hr />
-        <div>
-          <p>Couleur: {productItem[0] && productItem[0].color}</p>
-          <p>Parfum: {productItem[0] && productItem[0].perfume}</p>
-          <p>Floraison: {productItem[0] && productItem[0].flowering}</p>
-          <p>Hauteur à maturité: {productItem[0] && productItem[0].size} cm</p>
-        </div>
-        <hr />
-        <p>
-          {productItem[0] &&
-            productItem[0].description &&
-            productItem[0] &&
-            productItem[0].description.split('_')[0]}
-          <a href="#description">
-            <span> En savoir plus</span>
-          </a>
-        </p>
-        <a href="#details">
-          <p>VOIR PLUS DE DÉTAILS</p>
-        </a>
-        <hr />
-        <div>
-          {productItem &&
-            productItem.map((item) => (
-              <ItemType key={item.itemId} item={item} />
-            ))}
-        </div>{' '}
         <hr />
         <div id="details">
           <div>

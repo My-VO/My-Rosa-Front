@@ -1,13 +1,20 @@
+@import '../vars';
+
 a {
     text-decoration: none;
-    color: #007338;
+    color:  var(--green);
+}
+
+p {
+    color:  var(--gris);
+    line-height: 1.6;
 }
 
 .link {
     &:hover,
     &:focus,
     &:active {
-      color: #d1132c;
+      color:  var(--red);
       filter: invert(23%) sepia(97%) saturate(3706%) hue-rotate(340deg) brightness(80%) contrast(108%);
     }
 }
@@ -39,10 +46,10 @@ button {
 }
 
 .error {
-    color: #D1132C;
+    color:  var(--red);
     font-size: 12px;
 }
 
 .inputError {
-    border-color: #D1132C;
+    border-color:  var(--red);
 }
