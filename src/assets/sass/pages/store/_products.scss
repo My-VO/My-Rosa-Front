@@ -1,0 +1,30 @@
+@import '../../vars';
+
+#résultats {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gris);
+    padding: 1.2rem 0 1rem 0;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    &__product {
+        padding: 2rem 2rem;
+        width: 22rem;
+        height: 25rem;
+        &__img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;       
+        }
+        p {
+            color: var(--gris);
+        }
+        &__flex {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

@@ -25,19 +25,26 @@ const Products = () => {
 
   return (
     <>
-      <p>{products.length} résultats</p>
-      <div>
+      <p id="résultats">{products.length} résultats</p>
+      <hr />
+      <div className="products">
         {products.map((product) => (
-          <div key={product.itemId}>
+          <div className="products__product" key={product.itemId}>
             <Link
               to={`/items/${product.name}`}
               style={{ textDecoration: 'none' }}
             >
-              <img src={product.PicturesItems[0].picture} alt={product.name} />
+              <img
+                className="products__product__img"
+                src={product.PicturesItems[0].picture}
+                alt={product.name}
+              />
               <h4>{product.name.toUpperCase()}</h4>
               <p>{product.variety}</p>
-              <p>{product.stockQuantity} en stock</p>
-              <p>{product.price} €</p>
+              <div className="products__product__flex">
+                <p>{product.stockQuantity} en stock</p>
+                <p>{product.price} €</p>
+              </div>
             </Link>
           </div>
         ))}
