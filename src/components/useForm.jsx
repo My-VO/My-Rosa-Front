@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFrom = (callback, validate) => {
+const useForm = (callback, validate) => {
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -45,4 +45,4 @@ const useFrom = (callback, validate) => {
   };
 };
 
-export default useFrom;
+export default useForm;

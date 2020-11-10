@@ -50,6 +50,7 @@ function Orders() {
                 </div>
                 <div>
                   <h3>
+                    Statut commande :{' '}
                     {order.OrdersStatuses[0].Status.description
                       .charAt(0)
                       .toUpperCase() +
@@ -60,6 +61,7 @@ function Orders() {
                       <div key={orderItem.id}>
                         <div>
                           <img
+                            className="photo"
                             src={orderItem.Item.PicturesItems[0].picture}
                             alt={orderItem.Item.name}
                           />

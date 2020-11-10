@@ -53,3 +53,9 @@ button {
 .inputError {
     border-color:  var(--red);
 }
+
+.photo {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+}

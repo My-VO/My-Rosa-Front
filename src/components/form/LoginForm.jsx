@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { AuthContext } from '../contexts/AuthContext';
-import useFrom from '../useForm';
+import useForm from '../useForm';
 import validate from '../validate/Login.Validate';
 
 const API = process.env.REACT_APP_API;
@@ -16,14 +16,15 @@ function LoginForm() {
     values,
     setValues,
     errors,
-  } = useFrom(submit, validate);
+    // eslint-disable-next-line no-use-before-define
+  } = useForm(submit, validate);
   const history = useHistory();
   const { dispatch } = useContext(AuthContext);
 
   async function submit() {
     let result = {};
     try {
-      result = await axios.post(`${API}/signin`, {
+      result = await axios.post(`${API}/login`, {
         email: values.email,
         password: values.password,
       });
@@ -42,6 +43,7 @@ function LoginForm() {
         ...values,
         errorMessage: error.response.data.description,
       });
+      // eslint-disable-next-line no-console
       console.log(
         'Error login : ',
         `${error.response.data.title} : ${error.response.data.description}`

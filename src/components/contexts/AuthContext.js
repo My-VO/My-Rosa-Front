@@ -23,7 +23,7 @@ const AuthContextProvider = ({ children }) => {
       const token = localStorage.getItem('token');
 
       if (token) {
-        const result = await axios(`${API}/user/me`, {
+        const result = await axios.get(`${API}/user/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -14,6 +14,7 @@ export const sumItems = (cartItems) => {
 
   const total = cartItems
     .reduce(
+      // eslint-disable-next-line no-shadow
       (total, item) => total + item.price * parseFloat(item.quantityOrder),
       0
     )
@@ -33,6 +34,7 @@ export const CartReducer = (state, action) => {
           quantityOrder: parseFloat(action.quantityOrder),
         });
       } else {
+        // eslint-disable-next-line no-param-reassign
         state.cartItems[
           state.cartItems.findIndex(
             (item) => item.itemId === action.payload.itemId

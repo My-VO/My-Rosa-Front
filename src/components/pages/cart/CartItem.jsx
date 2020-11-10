@@ -16,7 +16,7 @@ const CartItem = ({ product }) => {
   return (
     <>
       <div>
-        <img src={PicturesItems[0].picture} alt={name} />
+        <img className="photo" src={PicturesItems[0].picture} alt={name} />
       </div>
       <div>
         <h3>{name.toUpperCase()}</h3>
@@ -27,16 +27,16 @@ const CartItem = ({ product }) => {
         <div>
           <button
             type="button"
-            onClick={quantityOrder < stockQuantity && (() => increase(product))}
+            onClick={quantityOrder > 1 && (() => decrease(product))}
           >
-            +
+            -
           </button>
           <p>Quantité: {parseFloat(quantityOrder)}</p>
           <button
             type="button"
-            onClick={quantityOrder > 1 && (() => decrease(product))}
+            onClick={quantityOrder < stockQuantity && (() => increase(product))}
           >
-            -
+            +
           </button>
           <button type="button" onClick={() => removeProduct(product)}>
             X Supprimer
