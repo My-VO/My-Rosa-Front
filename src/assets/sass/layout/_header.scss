@@ -6,6 +6,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    span {
+        font-size: 100%;
+    }
     &__announcement {
         display: grid;
         grid-template-columns: 50vw 50vw;
@@ -13,13 +16,13 @@
         &__container {
             grid-column: 2 / 3;
             color: white;
-            padding: 5px 20px;
+            padding: 5px 2rem;
             display: flex;
             justify-content: space-between;
             span, select {
                 color: white;
                 margin: 0 4px;
-                font-size: 0.85rem;
+                font-size: 90%;
             }
             select {
                 width: 100%;
@@ -31,7 +34,7 @@
     &__masthead {
         background-color: white;
         display: flex;
-        padding: 5px 20px;
+        padding: 5px 2rem;
         &__brand {
             display: flex;
             flex-direction: column;
@@ -43,6 +46,8 @@
             &__name {
                 color: #007338;
                 font-size: 1.2rem;
+                font-family: "Playfair Display", serif;
+                text-transform: uppercase;
             }
         }
         &__navbar {
@@ -96,7 +101,7 @@
                     display: flex;
                     span {
                         font-size: 0.8rem;
-                        font-weight: 800;
+                        font-weight: 600;
                         margin-left: -1px;
                         margin-bottom: 18px;
                     }
