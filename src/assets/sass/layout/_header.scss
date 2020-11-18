@@ -30,6 +30,20 @@
                 border: none;
             }
         }
+        @include media(phone) {
+            display: flex;
+            justify-content: space-between;
+            a {
+                display: none;
+            }
+            &__container {
+                width: 100%;
+                padding: 5px 0.5rem;
+                span, select {
+                    font-size: 80%;
+                }
+            }
+        }
     }
     &__masthead {
         background-color: white;
@@ -61,6 +75,13 @@
             padding: 0 20px;
             line-height: 1.5;
         }
+
+        @include media(phone) {
+            nav {
+                display: none;
+            }
+        }
+    
         &__misc {
             text-transform: uppercase;
             display: flex;
@@ -111,7 +132,13 @@
                     filter: invert(28%) sepia(30%) saturate(2150%) hue-rotate(112deg) brightness(92%) contrast(102%)
                 }
             }
+            @include media(phone) {
+                &__link:nth-child(3){
+                    display: none;
+                }
+            }
         }
+
      }
 }
 

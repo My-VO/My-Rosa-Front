@@ -1,9 +1,11 @@
 @import '../vars';
+@import '../helpers/mixins';
 
 a {
     text-decoration: none;
     color:  var(--green);
 }
+
 h3 {
     font-weight: 500;
 }
@@ -77,4 +79,62 @@ li {
 }
 input[type=checkbox] {
     cursor: pointer;
+}
+
+.container {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+@include media(phone) {
+    h3 {
+        font-weight: 500;
+    }
+    
+    p, span, h3, .error  {
+        font-size: 90%;
+    }
+
+    p, span {
+        font-weight: 400;
+    }
+    
+    input {
+        cursor: text;
+        outline: none;
+        padding-left: 10px;
+    }
+    
+    
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgba(0, 115, 56, 0.64);
+        opacity: 1; /* Firefox */
+        font-size: 1 rem;
+        font-weight: 400;
+      }
+      
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgba(0, 115, 56, 0.64);
+    }
+      
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: rgba(0, 115, 56, 0.64);
+    }
+    
+    .inputError {
+        border-color:  var(--red);
+    }
+    
+    .photo {
+        width: 20rem;
+        height: 20rem;
+    }
+    li {
+        line-height: 2rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
 }

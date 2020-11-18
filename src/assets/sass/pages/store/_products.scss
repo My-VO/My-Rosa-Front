@@ -11,6 +11,9 @@
     display: flex;
     padding: 1rem;
     &__sidebar {
+        @include media(phone) {
+            display: none;
+        }
         width: 25%;
         min-width: 16rem;
         &__option {
@@ -20,7 +23,7 @@
             padding: 1rem 0;
             line-height: 1.5;
             &-title {
-                line-height: 3rem;
+                padding-bottom: 0.7rem;
                 color: var(--green);
             }
             &-content {
@@ -53,12 +56,13 @@
         }
     }
     &__main {
+        padding-top: 1rem;
         &__filter-bar {
             border-bottom: 1px solid;
             border-color: var(--gris-clair);
             display: grid;
             grid-template-columns: auto auto auto;
-            
+            padding-bottom: 0.7rem;
             
             &--sorting {
                 display: flex;
@@ -102,6 +106,34 @@
                     font-weight: 500;
                 }
             }
+
+            @include media(phone) {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-row-gap: 0.2rem;
+                &__product {
+                    display: flex;
+                    justify-content: center;
+                    width: 47vw;
+                    height: 67vw;
+                    padding: 0;
+                    &__img {
+                        height: 79%;    
+                    }
+
+                    a {
+                        height: 86%;
+                    }
+                }
+            }
         }
+
+        @include media(phone) {
+            margin: 0 0.5rem;
+        }
+    }
+
+    @include media(phone) {
+        padding: 0;
     }
 }
