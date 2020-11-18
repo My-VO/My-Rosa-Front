@@ -58,6 +58,9 @@
     &__main {
         padding-top: 1rem;
         &__filter-bar {
+            @include media(phone) {
+                display: none;
+            }
             border-bottom: 1px solid;
             border-color: var(--gris-clair);
             display: grid;
@@ -77,6 +80,39 @@
             &--pagination {
                 p {
                     float: right;
+                }
+            }
+        }
+        &__filter-bar--mobile {
+            display: none;
+            @include media(phone) {
+                border-bottom: 1px solid;
+                border-color: var(--gris-clair);
+                display: grid;
+                grid-template-columns: auto auto;
+                padding-bottom: 0.7rem;
+                &--sorting {
+                    display: flex;
+                    
+                    p {
+                        padding-right: 0.5em;
+                        
+                    }
+                    select {
+                        border: 1px solid var(--gris-clair);
+                        color:  var(--gris);
+                    }
+                }
+                :nth-child(2) {
+                    background-color: var(--green);
+                    color: white;
+                    text-align: center;
+                }
+                p {
+                    text-align: center;
+                    font-size: 0.9rem;
+                    grid-column-start: 1;
+                    grid-column-end: 3;
                 }
             }
         }

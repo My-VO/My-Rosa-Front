@@ -238,6 +238,26 @@ const Products = () => {
               <p>Pagination</p>
             </div>
           </div>
+          <div className="collection__main__filter-bar--mobile">
+            <div>
+              <div className="collection__main__filter-bar--sorting">
+                <select id="collectionSort" name="collectionSort">
+                  <option value="best-selling">Populaires</option>
+                  <option value="manual">Meilleures notes</option>
+                  <option value="price-descending">
+                    Prix: du moins cher au plus cher
+                  </option>
+                  <option value="price-descending">
+                    Prix: du plus cher au moins cher
+                  </option>
+                  <option value="title-ascending">A-Z</option>
+                  <option value="title-descending">Z-A</option>
+                </select>
+              </div>
+            </div>
+            <div>AFFINER PAR</div>
+            <p id="résultats">{products.length} résultats</p>
+          </div>
           <div className="collection__main__products">
             {products.map((product) => (
               <div
