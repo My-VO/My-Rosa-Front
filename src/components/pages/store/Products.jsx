@@ -257,7 +257,7 @@ const Products = () => {
                   <p>{product.variety}</p>
                   <div className="collection__main__products__product__flex">
                     <p>{product.stockQuantity} en stock</p>
-                    <p>{product.price} €</p>
+                    <p>{parseFloat(product.price).toFixed(2)} €</p>
                   </div>
                 </Link>
               </div>

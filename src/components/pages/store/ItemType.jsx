@@ -25,6 +25,17 @@ const ItemType = ({ item }) => {
 
   return (
     <>
+      {item.type.toLowerCase().includes('conteneur') ? (
+        <img
+          src="https://cdn.shopify.com/s/files/1/0250/2157/9343/files/potted-variant-climber-deleafed_240x.png"
+          alt="{item.type}"
+        />
+      ) : (
+        <img
+          src="https://cdn.shopify.com/s/files/1/0250/2157/9343/files/bare-root-variant-bare-1_240x.png"
+          alt="{item.type}"
+        />
+      )}
       <p>{item.type}</p>
       <p>{parseFloat(item.price).toFixed(2)} €</p>
 
