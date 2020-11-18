@@ -9,6 +9,7 @@ import logo from '../assets/images/favicon/logo.png';
 import { ReactComponent as CompteIcon } from '../assets/images/icons/compte.svg';
 import { ReactComponent as WishlistIcon } from '../assets/images/icons/wishlist.svg';
 import { ReactComponent as CartIcon } from '../assets/images/icons/cart.svg';
+import { ReactComponent as MenuIcon } from '../assets/images/icons/menu.svg';
 import { CartContext } from './contexts/CartContext';
 
 function Header() {
@@ -35,6 +36,16 @@ function Header() {
         </div>
       </div>
       <header className="header__masthead">
+        <div className="header__masthead__misc">
+          <Link className="header__masthead__misc__link">
+            <MenuIcon className="header__masthead__misc__link__icon" />
+            <span>Menu</span>
+          </Link>
+          <Link className="header__masthead__misc__link">
+            <SearchIcon className="header__masthead__misc__link__icon" />
+            <span>Rechercher</span>
+          </Link>
+        </div>
         <div>
           <Link to="/">
             <div className="header__masthead__brand">

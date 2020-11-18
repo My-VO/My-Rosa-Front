@@ -1,3 +1,5 @@
+@import '../vars';
+
 .header {
     -webkit-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
     -moz-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
@@ -49,6 +51,10 @@
         background-color: white;
         display: flex;
         padding: 5px 2rem;
+
+        div:first-of-type{
+            display: none;
+        }
         &__brand {
             display: flex;
             flex-direction: column;
@@ -63,6 +69,14 @@
                 font-family: "Playfair Display", serif;
                 text-transform: uppercase;
             }
+            @include media(phone) {
+                &__logo {
+                    width: 1.8rem;
+                }
+                &__name {
+                    font-size: 0.9rem;
+                }
+            }
         }
         &__navbar {
             text-transform: uppercase;
@@ -76,11 +90,7 @@
             line-height: 1.5;
         }
 
-        @include media(phone) {
-            nav {
-                display: none;
-            }
-        }
+        
     
         &__misc {
             text-transform: uppercase;
@@ -131,13 +141,47 @@
                     width: 1.3rem;
                     filter: invert(28%) sepia(30%) saturate(2150%) hue-rotate(112deg) brightness(92%) contrast(102%)
                 }
+                @include media(phone) {
+                    font-size: 0.8rem;
+                    line-height: normal;  
+                }
             }
             @include media(phone) {
                 &__link:nth-child(3){
                     display: none;
                 }
+                &__search-bar {
+                    display: none;
+                }
+                flex: none;
             }
         }
+        @include media(phone) {
+            padding: 0.5rem;
+            justify-content: space-between;
+            nav {
+                display: none;
+            }
+
+            div:first-of-type{
+                display: flex;
+                a {
+                    font-size: 0.8rem;
+                    
+                }
+            }
+            &__misc {
+                &__link {
+                    font-size: 0.8rem;
+                    line-height: normal;
+                    padding: 0 0.5rem;
+                    &__icon {
+                        color: var(--green);
+                    }
+                }
+            }
+        }
+
 
      }
 }
