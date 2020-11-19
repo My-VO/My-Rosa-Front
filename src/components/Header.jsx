@@ -36,7 +36,7 @@ function Header() {
         </div>
       </div>
       <header className="header__masthead">
-        <div className="header__masthead__misc">
+        <div className="mobile header__masthead__misc">
           <Link className="header__masthead__misc__link">
             <MenuIcon className="header__masthead__misc__link__icon" />
             <span>Menu</span>
