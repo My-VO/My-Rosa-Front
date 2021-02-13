@@ -1,13 +1,14 @@
 .footer {
     background-color: #007338;
     color: white;
-    padding: 5px 20px;
+    padding: 5px 2rem;
     font-size: 0.85rem;;
     display: flex;
     justify-content: center;
     span {
         color: white;
         margin: 0 4px;
+        font-size: 90%;
     }
 
     &__reseaux-sociaux {

@@ -1,3 +1,5 @@
+@import '../vars';
+
 .header {
     -webkit-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
     -moz-box-shadow: 0px 2px 8px 0px rgba(189,189,189,1);
@@ -6,6 +8,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    span {
+        font-size: 100%;
+    }
     &__announcement {
         display: grid;
         grid-template-columns: 50vw 50vw;
@@ -13,13 +18,13 @@
         &__container {
             grid-column: 2 / 3;
             color: white;
-            padding: 5px 20px;
+            padding: 5px 2rem;
             display: flex;
             justify-content: space-between;
             span, select {
                 color: white;
                 margin: 0 4px;
-                font-size: 0.85rem;
+                font-size: 90%;
             }
             select {
                 width: 100%;
@@ -27,11 +32,29 @@
                 border: none;
             }
         }
+        @include media(phone) {
+            display: flex;
+            justify-content: space-between;
+            a {
+                display: none;
+            }
+            &__container {
+                width: 100%;
+                padding: 5px 0.5rem;
+                span, select {
+                    font-size: 80%;
+                }
+            }
+        }
     }
     &__masthead {
         background-color: white;
         display: flex;
-        padding: 5px 20px;
+        padding: 5px 2rem;
+
+        .mobile{
+            display: none;
+        }
         &__brand {
             display: flex;
             flex-direction: column;
@@ -43,6 +66,16 @@
             &__name {
                 color: #007338;
                 font-size: 1.2rem;
+                font-family: "Playfair Display", serif;
+                text-transform: uppercase;
+            }
+            @include media(phone) {
+                &__logo {
+                    width: 1.8rem;
+                }
+                &__name {
+                    font-size: 0.9rem;
+                }
             }
         }
         &__navbar {
@@ -56,6 +89,9 @@
             padding: 0 20px;
             line-height: 1.5;
         }
+
+        
+    
         &__misc {
             text-transform: uppercase;
             display: flex;
@@ -96,7 +132,7 @@
                     display: flex;
                     span {
                         font-size: 0.8rem;
-                        font-weight: 800;
+                        font-weight: 600;
                         margin-left: -1px;
                         margin-bottom: 18px;
                     }
@@ -105,8 +141,48 @@
                     width: 1.3rem;
                     filter: invert(28%) sepia(30%) saturate(2150%) hue-rotate(112deg) brightness(92%) contrast(102%)
                 }
+                @include media(phone) {
+                    font-size: 0.8rem;
+                    line-height: normal;  
+                }
+            }
+            @include media(phone) {
+                &__link:nth-child(3){
+                    display: none;
+                }
+                &__search-bar {
+                    display: none;
+                }
+                flex: none;
             }
         }
+        @include media(phone) {
+            padding: 0.5rem;
+            justify-content: space-between;
+            nav {
+                display: none;
+            }
+
+            div:first-of-type{
+                display: flex;
+                a {
+                    font-size: 0.8rem;
+                    
+                }
+            }
+            &__misc {
+                &__link {
+                    font-size: 0.8rem;
+                    line-height: normal;
+                    padding: 0 0.5rem;
+                    &__icon {
+                        color: var(--green);
+                    }
+                }
+            }
+        }
+
+
      }
 }
 

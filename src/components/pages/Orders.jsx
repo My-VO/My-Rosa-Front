@@ -12,7 +12,7 @@ function Orders() {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const getOrders = await axios(`${API}/orders`, {
+      const getOrders = await axios.get(`${API}/orders`, {
         headers: { Authorization: `Bearer ${authState.token}` },
       });
 
@@ -23,7 +23,7 @@ function Orders() {
 
   return (
     <>
-      <div>
+      <div className="container">
         <h2>Mes commandes</h2>
         <div>
           {orders.map((order) => (
@@ -50,7 +50,6 @@ function Orders() {
                 </div>
                 <div>
                   <h3>
-                    Statut commande :{' '}
                     {order.OrdersStatuses[0].Status.description
                       .charAt(0)
                       .toUpperCase() +

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Axios from 'axios';
@@ -44,41 +44,43 @@ const Cart = () => {
 
   return (
     <>
-      <form noValidate method="POST" action={`${API}/orders`}>
-        <div>
-          <h1>Cart</h1>
-          <p>This is the Cart Page.</p>
-        </div>
-        <div>
+      <div className="container">
+        <form noValidate method="POST" action={`${API}/orders`}>
           <div>
-            {cartItems.length > 0 ? (
-              <CartProducts />
-            ) : (
+            <h1>Cart</h1>
+            <p>This is the Cart Page.</p>
+          </div>
+          <div>
+            <div>
+              {cartItems.length > 0 ? (
+                <CartProducts />
+              ) : (
+                <div>
+                  <h3>Le panier est vide</h3>
+                  <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
+                </div>
+              )}
+            </div>
+            <hr />
+
+            {cartItems.length > 0 && (
               <div>
-                <h3>Le panier est vide</h3>
-                <a href="/"> CONTINUER À FAIRE DES ACHATS</a>
+                <p> Total Items</p>
+                <h4>{itemCount}</h4>
+                <p>Total Payment</p>
+                <h3>{total}</h3>
+                <hr />
+                {values.errorMessage && (
+                  <p className="error">{values.errorMessage}</p>
+                )}
+                <button type="submit" onClick={handleFormSubmit}>
+                  COMMANDER
+                </button>
               </div>
             )}
           </div>
-          <hr />
-
-          {cartItems.length > 0 && (
-            <div>
-              <p> Total Items</p>
-              <h4>{itemCount}</h4>
-              <p>Total Payment</p>
-              <h3>{total}</h3>
-              <hr />
-              {values.errorMessage && (
-                <p className="error">{values.errorMessage}</p>
-              )}
-              <button type="submit" onClick={handleFormSubmit}>
-                COMMANDER
-              </button>
-            </div>
-          )}
-        </div>
-      </form>
+        </form>
+      </div>
     </>
   );
 };
