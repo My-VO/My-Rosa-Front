@@ -7,17 +7,18 @@ a {
 }
 
 h3 {
+    font-size: 1.5rem;
     font-weight: 500;
 }
 
 p {
     color:  var(--gris);
     line-height: 1.6em;
-    font-size: 120%;
+    font-size: 1rem;
 }
 
 span {
-    font-size: 120%;
+    font-size: 1rem;
 }
 p, span {
     font-weight: 400;
@@ -45,7 +46,7 @@ button {
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(0, 115, 56, 0.64);
     opacity: 1; /* Firefox */
-    font-size: 1 rem;
+    font-size: 1rem;
     font-weight: 400;
   }
   
@@ -59,7 +60,7 @@ button {
 
 .error {
     color:  var(--red);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .inputError {

@@ -1,7 +1,8 @@
-@import './assets/sass/base/reset';
-@import './assets//sass/base/typography';
+@import './assets/sass/base/reset',
+        './assets//sass/base/typography';
 @import './assets//sass/helpers/mixins';
-@import './assets/sass/layout/header';
-@import './assets/sass/layout/footer';
-@import './assets/sass/pages/store/products';
-@import './assets/sass/pages/store/product';
+@import './assets/sass/layout/header',
+        './assets/sass/layout/footer';
+@import './assets/sass/pages/store/products',
+        './assets/sass/pages/store/product',
+        './assets/sass/pages/store/itemType';

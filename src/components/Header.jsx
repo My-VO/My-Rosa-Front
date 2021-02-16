@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import SearchIcon from '@material-ui/icons/Search';
 import { AuthContext } from './contexts/AuthContext';
 
 import logo from '../assets/images/favicon/logo.png';
@@ -10,6 +9,7 @@ import { ReactComponent as CompteIcon } from '../assets/images/icons/compte.svg'
 import { ReactComponent as WishlistIcon } from '../assets/images/icons/wishlist.svg';
 import { ReactComponent as CartIcon } from '../assets/images/icons/cart.svg';
 import { ReactComponent as MenuIcon } from '../assets/images/icons/menu.svg';
+import { ReactComponent as SearchIcon } from '../assets/images/icons/search.svg';
 import { CartContext } from './contexts/CartContext';
 
 function Header() {
